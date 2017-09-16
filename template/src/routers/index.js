@@ -1,16 +1,15 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Layout from 'layout/panjiachen/Layout';
+import { Layout, Error404 } from 'layout/panjiachen/index';
 
 const HomeIndex = () => import('views/home/index');
-const error404 = () => import('views/error/404');
 const authLogin = () => import('views/auth/login');
 
 Vue.use(Router);
 
 export const constantRouterMap = [
   { path: '/login', component: authLogin, hidden: true },
-  { path: '/401', component: error404, hidden: true },
+  { path: '/401', component: Error404, hidden: true },
   {
     // @todo path : '/' 配置主路由重新打开会为空
     path: '/home',

@@ -4,8 +4,6 @@ import 'normalize.css';
 import VueLazyload from 'vue-lazyload';
 import NProgress from 'nprogress'; // Progress 进度条
 import 'nprogress/nprogress.css'; // Progress 进度条 样式
-import 'layout/panjiachen/styles/index.scss';
-import 'layout/panjiachen/icons/index';
 import 'src/icons/iconfont';
 import { getToken } from 'utils/auth'; // 验权
 // @todo-ykq 导致字体无法加载
