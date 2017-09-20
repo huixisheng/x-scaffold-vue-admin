@@ -1,6 +1,9 @@
 const URL = {};
 
-URL['authLogin'] = '/auth/login';
+URL['authLogin'] = '/store/api/auth/sms-login';
+URL['authLogout'] = '/store/api/user/logout';
+// 后台登录用户的信息
+URL['userInfo'] = '/store/api/user/get-user-info';
 
 // 开发环境的模拟数据
 if (process.env.NODE_ENV === 'development') {

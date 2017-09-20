@@ -4,13 +4,13 @@
 
       <router-link v-if="!item.hidden && item.noDropdown && item.children.length>0" :to="item.path + '/' + item.children[0].path">
         <el-menu-item :index="item.path + '/' + item.children[0].path" class='submenu-title-noDropdown'>
-          <icon-svg v-if='item.icon' :icon-class="item.icon"></icon-svg><span>{{item.children[0].meta.title}}</span>
+          <icon-svg v-if='item.icon' :icon-class="item.icon"></icon-svg><span v-text="item.children[0].meta.title"></span>
         </el-menu-item>
       </router-link>
 
       <el-submenu :index="item.name" v-if="!item.noDropdown && !item.hidden">
         <template slot="title">
-          <icon-svg v-if='item.icon' :icon-class="item.icon"></icon-svg><span>{{item.meta.title}}</span>
+          <icon-svg v-if='item.icon' :icon-class="item.icon"></icon-svg><span v-text="item.meta.title"></span>
         </template>
         <template v-for="child in item.children" v-if='!child.hidden'>
 
@@ -18,7 +18,7 @@
 
           <router-link v-else :to="item.path + '/' + child.path">
             <el-menu-item :index="item.path + '/' + child.path">
-              <icon-svg v-if='child.icon' :icon-class="child.icon"></icon-svg><span>{{child.meta.title}}</span>
+              <icon-svg v-if='child.icon' :icon-class="child.icon"></icon-svg><span v-text="child.meta.title"></span>
             </el-menu-item>
           </router-link>
 
