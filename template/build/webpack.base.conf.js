@@ -10,6 +10,7 @@ function resolve(dir) {
 }
 const entry = utils.getEntries('./src/pages/*/*.js');
 entry['index'] = './src/main.js';
+// entry['docs'] = './docs/main.js';
 /* eslint-disable max-len */
 module.exports = {
   entry,
@@ -35,6 +36,9 @@ module.exports = {
       assets: resolve('src/assets'),
       api: resolve('src/api'),
       utils: resolve('src/utils'),
+      docs: resolve('docs'),
+      // @todo设置
+      theme: resolve('docs/theme/at-ui'),
     },
   },
   // https://doc.webpack-china.org/configuration/stats/
@@ -50,28 +54,28 @@ module.exports = {
     //   return /vue\.esm\.js|axios|element-ui|lodash/.test(content);
     // },
     rules: [
-      {
-        test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        enforce: 'pre',
-        include: [resolve('src'), resolve('test')],
-        exclude: /node_modules/,
-        options: {
-          cache: true,
-          formatter: require('eslint-friendly-formatter'),
-        },
-      },
+      // {
+      //   test: /\.(js|vue)$/,
+      //   loader: 'eslint-loader',
+      //   enforce: 'pre',
+      //   include: [resolve('src'), resolve('test')],
+      //   exclude: /node_modules/,
+      //   options: {
+      //     cache: true,
+      //     formatter: require('eslint-friendly-formatter'),
+      //   },
+      // },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        exclude: /node_modules/,
+        // exclude: /node_modules/,
         options: vueLoaderConfig,
       },
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: /node_modules/,
-        include: [resolve('src'), resolve('test')],
+        // exclude: /node_modules/,
+        include: [resolve('src'), resolve('test'), resolve('docs')],
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

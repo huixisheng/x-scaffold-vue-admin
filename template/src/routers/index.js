@@ -5,7 +5,7 @@ import { Layout, Error404 } from 'layout/panjiachen/index';
 const HomeIndex = () => import('views/home/index');
 const authLogin = () => import('views/auth/login');
 
-const demosDemo = () => import('views/demos/demo');
+// const demosDemo = () => import('views/demos/demo');
 Vue.use(Router);
 
 export const constantRouterMap = [

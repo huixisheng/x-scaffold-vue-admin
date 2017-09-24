@@ -88,7 +88,7 @@ if (process.env.NODE_ENV === 'production') {
   //   console.log(err, vm, window.location.href);
   // };
 }
-
+// debugger;
 /* eslint-disable no-new */
 new Vue({
   router,
