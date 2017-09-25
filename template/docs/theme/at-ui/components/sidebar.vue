@@ -2,19 +2,19 @@
   <div class="at-sidebar col-sm-24 col-md-6 col-lg-4">
     <nav class="at-nav">
       <template v-for="item in data">
-        <h2 class="at-nav__title">{{ item.title }}</h2>
+        <h2 class="at-nav__title" v-text="item.title"></h2>
         <ul class="at-nav__items">
           <template v-if="item.items">
             <li class="at-nav__item" v-for="navItem in item.items" :key="navItem.title">
-              <router-link class="at-nav__page" :to="navItem.name.toLowerCase()">{{ navItem.title }}</router-link>
+              <router-link class="at-nav__page" :to="navItem.name.toLowerCase()"><span v-text="navItem.title"></span></router-link>
             </li>
           </template>
           <li class="at-nav__item active" v-for="group in item.groups" :key="group.title">
-            <a class="at-nav__group" @click="toggleMenu">{{ group.title }}<i class="icon icon-chevron-down"></i></a>
+            <a class="at-nav__group" @click="toggleMenu" v-text="group.title"><i class="icon icon-chevron-down"></i></a>
             <ul class="at-nav__child-items">
               <li class="at-nav__child-item" v-for="navItem in group.items" :key="navItem.title">
-                <router-link v-if="lang === 'zh'" class="at-nav__component" :to="navItem.name.toLowerCase()">{{ navItem.name }}<span>{{ navItem.title }}</span></router-link>
-                <router-link v-else class="at-nav__component" :to="navItem.name.toLowerCase()">{{ navItem.title }}</router-link>
+                <router-link v-if="lang === 'zh'" class="at-nav__component" :to="navItem.name.toLowerCase()"><span v-text="navItem.name"></span><span v-text="navItem.title"></span></router-link>
+                <router-link v-else class="at-nav__component" :to="navItem.name.toLowerCase()"><span v-text="navItem.title"></span></router-link>
               </li>
             </ul>
           </li>
