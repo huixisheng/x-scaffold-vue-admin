@@ -15,28 +15,28 @@
 </template>
 
 <script>
-import CollapseTransition from 'theme/utils/collapse-transition'
+import CollapseTransition from 'theme/utils/collapse-transition';
 
 export default {
   components: {
-    CollapseTransition
+    CollapseTransition,
   },
-  data () {
+  data() {
     return {
-      isShow: false
-    }
+      isShow: false,
+    };
   },
   computed: {
-    lang () {
-      return this.$route.path.split('/')[1] || 'zh'
-    }
+    lang() {
+      return this.$route.path.split('/')[1] || 'zh';
+    },
   },
   methods: {
-    handleCopySuccess (evt) {
-      this.$Message.success(`Code copied.`)
-    }
-  }
-}
+    handleCopySuccess() {
+      this.$Message.success('Code copied.');
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

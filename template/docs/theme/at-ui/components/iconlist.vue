@@ -10,27 +10,27 @@
 </template>
 
 <script>
-import IconData from '../icons.json'
+import IconData from '../icons';
 
 export default {
   props: {
     type: {
       type: String,
-      default: 'core'
-    }
+      default: 'core',
+    },
   },
-  data () {
+  data() {
     return {
       showCopy: false,
-      icons: IconData[this.type]
-    }
+      icons: IconData[this.type],
+    };
   },
   methods: {
-    handleCopySuccess (evt) {
-      this.$Message.success(`[ ${evt.text} ] Icon Name has copied.`)
-    }
-  }
-}
+    handleCopySuccess(evt) {
+      this.$Message.success(`[ ${evt.text} ] Icon Name has copied.`);
+    },
+  },
+};
 </script>
 
 <style lang="scss">

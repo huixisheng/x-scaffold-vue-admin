@@ -15,15 +15,15 @@
 </template>
 
 <script>
-import MHeader from '../components/header'
-import MFooter from '../components/footer'
+import MHeader from '../components/header';
+import MFooter from '../components/footer';
 
 export default {
   components: {
     MHeader,
-    MFooter
-  }
-}
+    MFooter,
+  },
+};
 </script>
 
 

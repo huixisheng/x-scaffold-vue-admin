@@ -4,15 +4,15 @@ import NavConfig from 'docs/router/nav.config.yml';
 
 Vue.use(Router);
 
-function regeisterRoute(navConfig) {
+function regeisterRoute() {
   const routes = [];
   const parentRoutes = {};
 
 
-  Object.keys(NavConfig).forEach((lang, idx) => {
+  Object.keys(NavConfig).forEach((lang) => {
     const pageNavs = NavConfig[lang];
 
-    for (const pageName in pageNavs) {
+    for (const pageName in pageNavs) { // eslint-disable-line
       pageNavs[pageName].forEach((nav) => {
         const parentName = nav.name;
         parentRoutes[`${parentName}-${lang}`] = parentRoutes[`${parentName}-${lang}`] || addParentRoute(parentName, lang);
@@ -35,7 +35,7 @@ function regeisterRoute(navConfig) {
   function addParentRoute(parentName, lang) {
     return {
       path: `/${lang}/${parentName.toLowerCase()}`,
-      component: require(`theme/views/${parentName.toLowerCase()}${lang === 'zh' ? '' : `-${lang}`}`).default,
+      component: require(`theme/views/${parentName.toLowerCase()}${lang === 'zh' ? '' : `-${lang}`}`).default, // eslint-disable-line
       children: [],
     };
   }
@@ -44,12 +44,12 @@ function regeisterRoute(navConfig) {
     parentRoutes[`${parentName}-${lang}`].children.push({
       path: `${item.name.toLowerCase()}`,
       name: `${item.name}-${lang}`,
-      component: require(`../markdown/${lang}/${item.name.toLowerCase()}.md`).default,
+      component: require(`../markdown/${lang}/${item.name.toLowerCase()}.md`).default, // eslint-disable-line
     });
   }
 
-  for (const key in parentRoutes) {
-    if (parentRoutes.hasOwnProperty(key)) {
+  for (const key in parentRoutes) { // eslint-disable-line
+    if (parentRoutes.hasOwnProperty(key)) { // eslint-disable-line
       routes.push(parentRoutes[key]);
     }
   }
@@ -71,11 +71,11 @@ const userLang = localStorage.getItem('at-ui-language') || navigatorLang || 'zh'
 routes = routes.concat([{
   path: '/zh',
   name: 'Home',
-  component: require('theme/views/index').default,
+  component: require('theme/views/index').default, // eslint-disable-line
 }, {
   path: '/en',
   name: 'Home-en',
-  component: require('theme/views/index-en').default,
+  component: require('theme/views/index-en').default, // eslint-disable-line
 }, {
   path: '/',
   redirect: { name: userLang === 'zh' ? 'Home' : `Home-${userLang}` },
@@ -134,12 +134,13 @@ const router = new Router({
   routes,
   // @todo
   // root: process.env.serverConfig.portalPrefix,
-  scrollBehavior(to, from, savedPosition) {
+  scrollBehavior(to, from) {
     if (to.hash) {
       return {
         selector: to.hash,
       };
     }
+    console.log(from);
 
     return { x: 0, y: 0 };
   },

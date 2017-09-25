@@ -1,8 +1,8 @@
 import Vue from 'vue';
+import { i18n } from 'theme/index';
 
 import App from './App';
 import router from './router';
-import { i18n } from  'theme/index';
 
 Vue.config.debug = true;
 

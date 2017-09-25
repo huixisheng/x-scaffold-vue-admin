@@ -39,65 +39,65 @@ export default {
   props: {
     collapse: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
-  data () {
+  data() {
     return {
-      isOpen: false
-    }
+      isOpen: false,
+    };
   },
   computed: {
-    lang () {
-      return this.$route.path.split('/')[1] || 'zh'
-    }
+    lang() {
+      return this.$route.path.split('/')[1] || 'zh';
+    },
   },
-  mounted () {
+  mounted() {
     if (!this.collapse) {
-      window.addEventListener('scroll', this.headerCollapse)
+      window.addEventListener('scroll', this.headerCollapse);
     } else {
-      window.removeEventListener('scroll', this.headerCollapse)
+      window.removeEventListener('scroll', this.headerCollapse);
     }
   },
-  destroyed () {
-    window.removeEventListener('scroll', this.headerCollapse)
+  destroyed() {
+    window.removeEventListener('scroll', this.headerCollapse);
   },
   methods: {
-    toggleMenu () {
-      const header = document.getElementById('J-page-header')
+    toggleMenu() {
+      const header = document.getElementById('J-page-header');
 
       if (this.isOpen) {
-        this.isOpen = false
-        header.classList.remove('open')
+        this.isOpen = false;
+        header.classList.remove('open');
       } else {
-        this.isOpen = true
-        header.classList.add('open')
+        this.isOpen = true;
+        header.classList.add('open');
       }
     },
-    headerCollapse () {
-      const header = document.getElementById('J-page-header')
-      const offsetTop = document.body.scrollTop || 0
+    headerCollapse() {
+      const header = document.getElementById('J-page-header');
+      const offsetTop = document.body.scrollTop || 0;
 
       if (offsetTop > 50) {
-        header.classList.add('collapse')
+        header.classList.add('collapse');
       } else {
-        header.classList.remove('collapse')
+        header.classList.remove('collapse');
       }
     },
-    switchLang (targetLang) {
-      if (this.lang === targetLang) return
+    switchLang(targetLang) {
+      if (this.lang === targetLang) return;
 
-      this.$i18n.locale = targetLang
-      localStorage.setItem('at-ui-language', targetLang)
+      this.$i18n.locale = targetLang;
+      localStorage.setItem('at-ui-language', targetLang);
 
       if (this.$route.name === 'Home') {
-        this.$router.push({ name: 'Home-en' })
+        this.$router.push({ name: 'Home-en' });
       } else {
-        this.$router.push(this.$route.path.replace(this.lang, targetLang))
+        this.$router.push(this.$route.path.replace(this.lang, targetLang));
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="scss">

@@ -7,12 +7,12 @@
 <script>
 export default {
   methods: {
-    afterLeave () {
-      window.scrollTo(0, 0)
-    }
+    afterLeave() {
+      window.scrollTo(0, 0);
+    },
   },
   mounted() {
     // debugger;
   },
-}
+};
 </script>

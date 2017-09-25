@@ -29,25 +29,25 @@ export default {
   props: {
     data: {
       type: Array,
-      default: []
-    }
+      default: [],
+    },
   },
   computed: {
-    lang () {
-      return this.$route.path.split('/')[1] || 'zh'
-    }
+    lang() {
+      return this.$route.path.split('/')[1] || 'zh';
+    },
   },
   methods: {
-    toggleMenu (event) {
-      const parentNode = event.target.parentNode
+    toggleMenu(event) {
+      const parentNode = event.target.parentNode;
       if (parentNode.classList.contains('active')) {
-        parentNode.classList.remove('active')
+        parentNode.classList.remove('active');
       } else {
-        parentNode.classList.add('active')
+        parentNode.classList.add('active');
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="scss">

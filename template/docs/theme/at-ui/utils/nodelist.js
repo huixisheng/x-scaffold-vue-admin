@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * https://github.com/yuche/vue-strap/blob/master/src/utils/NodeList.js
  */

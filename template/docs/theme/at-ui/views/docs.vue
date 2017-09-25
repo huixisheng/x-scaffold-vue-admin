@@ -30,26 +30,26 @@
 </style>
 
 <script>
-import MHeader from '../components/header'
-import MFooter from '../components/footer'
-import Sidebar from '../components/sidebar'
-import navsConfig from 'docs/router/nav.config.yml';;
+import navsConfig from 'docs/router/nav.config.yml';
+import MHeader from '../components/header';
+import MFooter from '../components/footer';
+import Sidebar from '../components/sidebar';
 
 export default {
   components: {
     Sidebar,
     MHeader,
-    MFooter
+    MFooter,
   },
-  data () {
+  data() {
     return {
-      navs: navsConfig.zh.components
-    }
+      navs: navsConfig.zh.components,
+    };
   },
   methods: {
-    afterLeave () {
-      window.scrollTo(0, 0)
-    }
-  }
-}
+    afterLeave() {
+      window.scrollTo(0, 0);
+    },
+  },
+};
 </script>
