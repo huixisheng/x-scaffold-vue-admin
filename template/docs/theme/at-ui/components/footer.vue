@@ -10,7 +10,7 @@
           © 2017 Created by 美妆心得
         </div>
       </div>
-      <div class="github-logo"><a data-redirect="https://github.com/cosmeapp">Github</a></div>
+      <div class="github-logo"><a blank="_target" href="https://github.com/cosmeapp">Github</a></div>
     </div>
   </footer>
 </template>

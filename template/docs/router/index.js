@@ -1,126 +1,129 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import NavConfig from './nav.config.yml'
+import Vue from 'vue';
+import Router from 'vue-router';
+import NavConfig from 'docs/router/nav.config.yml';
 
-Vue.use(Router)
+Vue.use(Router);
 
-function regeisterRoute (navConfig) {
-  const routes = []
-  const parentRoutes = {}
+function regeisterRoute(navConfig) {
+  const routes = [];
+  const parentRoutes = {};
 
 
   Object.keys(NavConfig).forEach((lang, idx) => {
-    const pageNavs = NavConfig[lang]
+    const pageNavs = NavConfig[lang];
 
     for (const pageName in pageNavs) {
-      pageNavs[pageName].forEach(nav => {
-        const parentName = nav.name
-        parentRoutes[`${parentName}-${lang}`] = parentRoutes[`${parentName}-${lang}`] || addParentRoute(parentName, lang)
+      pageNavs[pageName].forEach((nav) => {
+        const parentName = nav.name;
+        parentRoutes[`${parentName}-${lang}`] = parentRoutes[`${parentName}-${lang}`] || addParentRoute(parentName, lang);
 
         if (nav.groups) {
-          nav.groups.forEach(group => {
-            group.items.forEach(item => {
-              addRoute(parentName, item, lang)
-            })
-          })
+          nav.groups.forEach((group) => {
+            group.items.forEach((item) => {
+              addRoute(parentName, item, lang);
+            });
+          });
         } else if (nav.items) {
-          nav.items.forEach(item => {
-            addRoute(parentName, item, lang)
-          })
+          nav.items.forEach((item) => {
+            addRoute(parentName, item, lang);
+          });
         }
-      })
+      });
     }
-  })
+  });
 
-  function addParentRoute (parentName, lang) {
+  function addParentRoute(parentName, lang) {
     return {
       path: `/${lang}/${parentName.toLowerCase()}`,
       component: require(`theme/views/${parentName.toLowerCase()}${lang === 'zh' ? '' : `-${lang}`}`).default,
-      children: []
-    }
+      children: [],
+    };
   }
 
-  function addRoute (parentName, item, lang) {
+  function addRoute(parentName, item, lang) {
     parentRoutes[`${parentName}-${lang}`].children.push({
       path: `${item.name.toLowerCase()}`,
       name: `${item.name}-${lang}`,
-      component: require(`../markdown/${lang}/${item.name.toLowerCase()}.md`).default
-    })
+      component: require(`../markdown/${lang}/${item.name.toLowerCase()}.md`).default,
+    });
   }
 
   for (const key in parentRoutes) {
     if (parentRoutes.hasOwnProperty(key)) {
-      routes.push(parentRoutes[key])
+      routes.push(parentRoutes[key]);
     }
   }
 
-  return routes
+  return routes;
 }
 
-let routes = regeisterRoute(NavConfig)
-let navigatorLang = window.navigator.language.slice(0, 2)
+let routes = regeisterRoute(NavConfig);
+console.log(routes);
+console.log(NavConfig);
+let navigatorLang = window.navigator.language.slice(0, 2);
 
 if (['en', 'zh'].indexOf(navigatorLang) <= -1) {
-  navigatorLang = ''
+  navigatorLang = '';
 }
 
-const userLang = localStorage.getItem('at-ui-language') || navigatorLang || 'zh'
+const userLang = localStorage.getItem('at-ui-language') || navigatorLang || 'zh';
 
 routes = routes.concat([{
   path: '/zh',
   name: 'Home',
-  component: require('theme/views/index').default
+  component: require('theme/views/index').default,
 }, {
   path: '/en',
   name: 'Home-en',
-  component: require('theme/views/index-en').default
+  component: require('theme/views/index-en').default,
 }, {
   path: '/',
-  redirect: { name: userLang === 'zh' ? 'Home' : `Home-${userLang}` }
+  redirect: { name: userLang === 'zh' ? 'Home' : `Home-${userLang}` },
 }, {
   path: '*',
-  redirect: { name: 'Home' }
-}])
+  redirect: { name: 'Home' },
+}]);
 
-routes.forEach(page => {
-  if (page.path === '/zh/guide') {
-    page.children.push({
-      path: '',
-      name: 'Guide',
-      redirect: { name: page.children[0].name }
-    })
-  } else if (page.path === '/en/guide') {
-    page.children.push({
-      path: '',
-      name: 'Guide-en',
-      redirect: { name: page.children[0].name }
-    })
-  } else if (page.path === '/zh/docs') {
+routes.forEach((page) => {
+  // if (page.path === '/zh/guide') {
+  //   page.children.push({
+  //     path: '',
+  //     name: 'Guide',
+  //     redirect: { name: page.children[0].name },
+  //   });
+  // } else if (page.path === '/en/guide') {
+  //   page.children.push({
+  //     path: '',
+  //     name: 'Guide-en',
+  //     redirect: { name: page.children[0].name },
+  //   });
+  // } else
+  if (page.path === '/zh/docs') {
     page.children.push({
       path: '',
       name: 'Docs',
-      redirect: { name: page.children[0].name }
-    })
+      redirect: { name: page.children[0].name },
+    });
   } else if (page.path === '/en/docs') {
     page.children.push({
       path: '',
       name: 'Docs-en',
-      redirect: { name: page.children[0].name }
-    })
+      redirect: { name: page.children[0].name },
+    });
   } else if (page.path === '/zh/resource') {
     page.children.push({
       path: '',
       name: 'Resource',
-      redirect: { name: page.children[0].name }
-    })
+      redirect: { name: page.children[0].name },
+    });
   } else if (page.path === '/en/resource') {
     page.children.push({
       path: '',
       name: 'Resource-en',
-      redirect: { name: page.children[0].name }
-    })
+      redirect: { name: page.children[0].name },
+    });
   }
-})
+});
 
 // routes.push({
 //   path: '*',
@@ -131,15 +134,15 @@ const router = new Router({
   routes,
   // @todo
   // root: process.env.serverConfig.portalPrefix,
-  scrollBehavior (to, from, savedPosition) {
+  scrollBehavior(to, from, savedPosition) {
     if (to.hash) {
       return {
-        selector: to.hash
-      }
+        selector: to.hash,
+      };
     }
 
-    return { x: 0, y: 0 }
-  }
-})
+    return { x: 0, y: 0 };
+  },
+});
 
-export default router
+export default router;

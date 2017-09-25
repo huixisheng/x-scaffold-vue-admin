@@ -7,11 +7,16 @@
     id="J-page-header">
     <div class="nav-container">
       <div class="nav-left">
+        <div class="logo">
+          <router-link :to="{ name: lang === 'en' ? 'Home-en' : 'Home' }">
+            <span>美妆心得</span>
+          </router-link>
+        </div>
         <i class="icon icon-menu nav-icon" @click="toggleMenu"></i>
       </div>
       <div v-if="lang === 'en'" class="nav-right">
         <ul class="navbar">
-          <li><router-link :to="{ name: 'Guide-en' }">Guide</router-link></li>
+          <!-- <li><router-link :to="{ name: 'Guide-en' }">Guide</router-link></li> -->
           <li><router-link :to="{ name: 'Docs-en' }">Component</router-link></li>
           <li><router-link :to="{ name: 'Resource-en' }">Resource</router-link></li>
         </ul>
@@ -19,7 +24,7 @@
       </div>
       <div v-else class="nav-right">
         <ul class="navbar">
-          <li><router-link :to="{ name: 'Guide' }">指南</router-link></li>
+          <!-- <li><router-link :to="{ name: 'Guide' }">指南</router-link></li> -->
           <li><router-link :to="{ name: 'Docs' }">组件</router-link></li>
           <li><router-link :to="{ name: 'Resource' }">资源</router-link></li>
         </ul>

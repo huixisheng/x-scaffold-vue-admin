@@ -10,7 +10,7 @@ function resolve(dir) {
 }
 const entry = utils.getEntries('./src/pages/*/*.js');
 entry['index'] = './src/main.js';
-// entry['docs'] = './docs/main.js';
+
 /* eslint-disable max-len */
 module.exports = {
   entry,
@@ -54,17 +54,17 @@ module.exports = {
     //   return /vue\.esm\.js|axios|element-ui|lodash/.test(content);
     // },
     rules: [
-      // {
-      //   test: /\.(js|vue)$/,
-      //   loader: 'eslint-loader',
-      //   enforce: 'pre',
-      //   include: [resolve('src'), resolve('test')],
-      //   exclude: /node_modules/,
-      //   options: {
-      //     cache: true,
-      //     formatter: require('eslint-friendly-formatter'),
-      //   },
-      // },
+      {
+        test: /\.(js|vue)$/,
+        loader: 'eslint-loader',
+        enforce: 'pre',
+        include: [resolve('src'), resolve('test')],
+        exclude: /node_modules/,
+        options: {
+          cache: true,
+          formatter: require('eslint-friendly-formatter'),
+        },
+      },
       {
         test: /\.vue$/,
         loader: 'vue-loader',

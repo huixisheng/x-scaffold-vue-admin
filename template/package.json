@@ -5,7 +5,7 @@
   "author": "huixisheng@gmail.com",
   "scripts": {
     "dev": "node build/dev-server.js",
-    "dev:docs": "webpack-dev-server --inline --hot --watch -d --open --host 192.168.31.152 --config=build/webpack.docs.conf.js",
+    "dev:docs": "webpack-dev-server --config=build/webpack.docs.conf.js",
     "build": "node build/build.js",
     "build:report": "cross-env npm_config_report=true node build/build.js",
     "build:dll": "webpack --config=build/webpack.dll.conf.js --colors  --profile --progress",
