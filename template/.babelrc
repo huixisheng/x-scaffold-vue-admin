@@ -1,9 +1,13 @@
-
 {
   "presets": [
     ["env", { "modules": false }],
     "stage-2"
   ],
   "plugins": ["transform-runtime"],
-  "comments": false
+  "comments": false,
+   "ignore": [
+      "src/vendors/*",
+      "node_modules/**",
+      "src/icons/*.js"
+   ]
 }

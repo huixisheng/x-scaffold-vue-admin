@@ -1,9 +1,7 @@
-/* 根据'./bin/build/new.js'自动生成 */
 
-import Form from './form';
+/* 使用x-do-cli的命令 x component 自动生成 */
 
 const packages = {
-  FormSelect: Form.Select,
 };
 
 export default packages;

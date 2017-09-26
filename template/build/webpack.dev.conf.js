@@ -102,15 +102,7 @@ module.exports = merge(baseWebpackConfig, {
   ],
 });
 
-const pages = utils.getEntries('./src/pages/*/*.html');
-pages['index'] = './index.html';
-// eslint-disable-next-line
-for (const pathname in pages) {
-  const conf = {
-    filename: pathname + '.html',
-    template: pages[pathname],
-    inject: true,
-    excludeChunks: Object.keys(pages).filter(item => (item !== pathname)),
-  };
-  module.exports.plugins.push(new HtmlWebpackPlugin(conf));
-}
+const pages = utils.getEntriesHtml();
+pages.forEach((value) => {
+  module.exports.plugins.push(new HtmlWebpackPlugin(value));
+});

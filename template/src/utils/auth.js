@@ -3,7 +3,8 @@ import Cookies from 'js-cookie'; // @todo 替换为localStorage
 const TokenKey = 'Admin-Token';
 
 export function getToken() {
-  return Cookies.get(TokenKey);
+  return '1111';
+  // return Cookies.get(TokenKey);
 }
 
 export function setToken(token) {

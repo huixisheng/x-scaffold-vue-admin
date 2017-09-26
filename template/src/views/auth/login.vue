@@ -10,6 +10,7 @@
 
 <script>
 export default {
+  title: '登录页面',
   data() {
     return {
 

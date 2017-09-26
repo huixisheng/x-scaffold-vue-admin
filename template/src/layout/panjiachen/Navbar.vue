@@ -104,7 +104,7 @@ export default {
 							.el-icon-caret-bottom {
 									position: absolute;
 									right: -20px;
-									top: 25px;
+									top: 20px;
 									font-size: 12px;
 							}
 					}

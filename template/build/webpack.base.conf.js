@@ -8,8 +8,7 @@ const webpack = require('webpack');
 function resolve(dir) {
   return path.join(__dirname, '..', dir);
 }
-const entry = utils.getEntries('./src/pages/*/*.js');
-entry['index'] = './src/main.js';
+const entry = utils.getEntriesJs();
 
 /* eslint-disable max-len */
 module.exports = {
@@ -114,7 +113,7 @@ module.exports = {
     new webpack.optimize.ModuleConcatenationPlugin(),
     // new webpack.DllReferencePlugin({
     //   context: path.resolve(__dirname, '..'),
-    //   manifest: require('./vendor-manifest.json')
+    //   manifest: require('./dll/vendor-manifest.json')
     // }),
   ],
 };

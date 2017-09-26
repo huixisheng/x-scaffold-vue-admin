@@ -4,7 +4,7 @@ const MarkdownItContainer = require('markdown-it-container');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const striptags = require('./strip-tags');
+const striptags = require('./lib/strip-tags');
 
 const baseWebpackConfig = require('./webpack.base.conf');
 const config = require('../config');

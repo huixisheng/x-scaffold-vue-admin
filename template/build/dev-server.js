@@ -10,7 +10,7 @@ const opn = require('opn');
 const path = require('path');
 const express = require('express');
 const webpack = require('webpack');
-const DashboardPlugin = require('webpack-dashboard/plugin')
+const DashboardPlugin = require('webpack-dashboard/plugin');
 const proxyMiddleware = require('http-proxy-middleware');
 const webpackConfig = process.env.NODE_ENV === 'testing'
   ? require('./webpack.prod.conf')
@@ -59,7 +59,7 @@ const devMiddleware = require('webpack-dev-middleware')(compiler, {
   publicPath: webpackConfig.output.publicPath,
   stats: {
     colors: true,
-    chunks: false
+    chunks: false,
   },
   quiet: true,
 });
@@ -97,7 +97,7 @@ app.use(devMiddleware);
 // enable hot-reload and state-preserving
 // compilation error display
 app.use(hotMiddleware);
-compiler.apply(new DashboardPlugin())
+compiler.apply(new DashboardPlugin());
 
 // serve pure static assets
 const staticPath = path.posix.join('/', config.dev.assetsSubDirectory);

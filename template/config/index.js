@@ -23,7 +23,7 @@ const PORT = 8080;
 const cdnAssestPath = 's/webpack/';
 const projectType = 'MHome';
 
-const RootPaths = require('../build/RootPaths');
+const RootPaths = require('../build/lib/RootPaths');
 const rootPathsInstance = new RootPaths();
 const projectAssetsPath = rootPathsInstance.getModulesAssetsPath('cosmeapi', projectType);
 

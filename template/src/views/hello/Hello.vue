@@ -30,6 +30,7 @@
 
 <script>
 export default {
+  title: 'hello页面',
   name: 'hello',
   data() {
     return {
