@@ -5,6 +5,7 @@ import VueLazyload from 'vue-lazyload';
 import NProgress from 'nprogress'; // Progress 进度条
 import 'nprogress/nprogress.css'; // Progress 进度条 样式
 import 'src/icons/iconfont';
+import Packages from 'components/index';
 import { getToken } from 'utils/auth'; // 验权
 // @todo-ykq 导致字体无法加载
 // import 'element-ui/lib/theme-default/index.css';
@@ -30,7 +31,7 @@ Vue.use(VueLazyload, {
     // },
     webp(listener, options) {
       if (!options.supportWebp) return;
-      const isCDN = /img0.cosmeapp.com/;
+      const isCDN = /[img0|static].cosmeapp.com/;
       if (isCDN.test(listener.src)) {
         // https://developer.qiniu.com/dora/manual/1279/basic-processing-images-imageview2
         // https://developer.qiniu.com/dora/manual/1270/the-advanced-treatment-of-images-imagemogr2
@@ -48,8 +49,10 @@ Vue.use(VueLazyload, {
 });
 Vue.use(ElementUI);
 Vue.use(AdminUI);
+Vue.use(Packages);
 
 function formatImageToWebp(src) {
+  // http://static.cosmeapp.com/activity/201703/28/10/50/58d9cf6d0d6a6679.jpg?imageMogr2/auto-orient/thumbnail/750x%3E  @todo
   if (src.indexOf('?imageView2') >= 0 || src.indexOf('?imageMogr2') >= 0) {
     if (src.indexOf('format/') >= 0) {
       return src.replace(/\/format\/jpg/ig, '/format/webp');
