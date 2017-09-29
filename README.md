@@ -59,3 +59,15 @@ $ npm run e2e
 ```bash
 $ npm test
 ```
+
+
+## 问题记录 ##
+
+/Users/huixisheng/x/x-scaffold-vue-webpack/template/node_modules/_webpack@3.6.0@webpack/lib/HotModuleReplacementPlugin.js:59
+                    records.chunkModuleIds[chunk.id] = chunk.mapModules(m => m.id);
+                                                             ^
+
+TypeError: chunk.mapModules is not a function
+
+使用npm5 安装会报错
+- https://github.com/JeffreyWay/laravel-mix/issues/985
