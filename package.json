@@ -5,7 +5,6 @@
   "description": "根据`vue init webpack`生成的模块修改，支持多页面配置",
   "scripts": {},
   "devDependencies": {
-    "fs-extra": "^4.0.2",
     "vue-cli": "^2.8.2"
   }
 }

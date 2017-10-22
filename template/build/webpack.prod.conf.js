@@ -179,9 +179,9 @@ if (config.build.productionGzip) {
 module.exports = webpackConfig;
 
 const pages = utils.getEntriesHtmlProd();
-pages.forEach((value) => {
-  module.exports.plugins.push(new HtmlWebpackPlugin(value));
-});
+for(page in pages) {
+  module.exports.plugins.push(new HtmlWebpackPlugin(pages[page]));
+}
 
 if (config.build.bundleAnalyzerReport) {
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;

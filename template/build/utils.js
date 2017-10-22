@@ -149,7 +149,7 @@ exports.getEntriesHtmlProd = function () {
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency',
     };
-    if (pathname in module.exports.entry) {    // 为页面导入所需的依赖
+    if (pathname in pages) {    // 为页面导入所需的依赖
       conf.chunks = ['vendor', 'manifest', pathname];
       conf.hash = true;
     }
