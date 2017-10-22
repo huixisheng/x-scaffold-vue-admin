@@ -4,18 +4,31 @@ const webpack = require('webpack');
 const config = require('../config');
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.conf');
+const xConfig = require('x-config-deploy').getConfig();
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
-// const pkg = require('../package.json');
+const webpackConfig = require('@x-scaffold/webpack-config');
+const QiniuPlugin = require('qiniu-webpack-plugin');
+const pkg = require('../package.json');
 // const DashboardPlugin = require('webpack-dashboard/plugin');
 // const WebpackSftpClient = require('webpack-sftp-client');
 // const xConfig = require('x-config-deploy').getConfig();
 
 // const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 const StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
+
+const qiniuPluginAssets = new QiniuPlugin({
+  ACCESS_KEY: xConfig.qiniuConfig.accessKey,
+  SECRET_KEY: xConfig.qiniuConfig.secretKey,
+  bucket: 'deploy',
+  path: '',
+  include: [new RegExp(pkg.name + '/')],
+  // include 可选项。你可以选择上传的文件，比如['main.js']``或者[/main/]`
+  // path: '[hash]'
+});
 
 
 const os = require('os');
@@ -25,9 +38,9 @@ const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
   : config.build.env;
 
-const webpackConfig = merge(baseWebpackConfig, {
+const webpackBaseConfig = merge(baseWebpackConfig, {
   module: {
-    rules: utils.styleLoaders({
+    rules: webpackConfig.styleLoaders({
       sourceMap: config.build.productionSourceMap,
       extract: true,
     }),
@@ -39,9 +52,11 @@ const webpackConfig = merge(baseWebpackConfig, {
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js'),
   },
   plugins: [
-    new StatsWriterPlugin({
-      filename: 'stats.json', // Default
-    }),
+    qiniuPluginAssets,
+    // @todo
+    // new StatsWriterPlugin({
+    //   filename: 'stats.json', // Default
+    // }),
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env,
@@ -78,7 +93,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // }),
     // extract css into its own file
     new ExtractTextPlugin({
-      filename: utils.assetsPath('css/[name].[contenthash].css'),
+      filename: utils.assetsPath('css/[name].[contenthash:8].css'),
     }),
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.
@@ -166,7 +181,7 @@ const webpackConfig = merge(baseWebpackConfig, {
 if (config.build.productionGzip) {
   const CompressionWebpackPlugin = require('compression-webpack-plugin');
 
-  webpackConfig.plugins.push(
+  webpackBaseConfig.plugins.push(
     new CompressionWebpackPlugin({
       asset: '[path].gz[query]',
       algorithm: 'gzip',
@@ -176,12 +191,12 @@ if (config.build.productionGzip) {
     }));
 }
 
-module.exports = webpackConfig;
+module.exports = webpackBaseConfig;
 
-const pages = utils.getEntriesHtmlProd();
-for(page in pages) {
-  module.exports.plugins.push(new HtmlWebpackPlugin(pages[page]));
-}
+const pages = webpackConfig.getEntriesHtmlProd();
+pages.forEach((value) => {
+  module.exports.plugins.push(new HtmlWebpackPlugin(value));
+});
 
 if (config.build.bundleAnalyzerReport) {
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
