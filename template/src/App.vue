@@ -25,11 +25,11 @@ export default {
       },
     };
   },
-  watch: {
-    $route: (to, from) => {
-      console.log('App.vue -> watch $route', to, from);
-    },
-  },
+  // watch: {
+  //   $route: (to, from) => {
+  //     console.log('App.vue -> watch $route', to, from);
+  //   },
+  // },
 };
 </script>
 

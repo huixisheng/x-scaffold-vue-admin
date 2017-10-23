@@ -44,7 +44,7 @@ module.exports = {
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: pkg.name,
     cdnAssestSubPath: cdnAssestPath,
-    assetsPublicPath: `http://p1.cosmeapp.com/`,
+    assetsPublicPath: `//p1.cosmeapp.com/`,
     productionSourceMap: false,
     // Gzip off by default as many popular static hosts such as
     // Surge or Netlify already gzip all static assets for you.

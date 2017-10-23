@@ -69,10 +69,9 @@ class RootPaths {
     //   domain = p1
     //   return p1
     // })
-    console.log(' envConfig[platformUrl]', href.hostname);
+    // console.log(' envConfig[platformUrl]', href.hostname);
     return href.hostname;
   }
-
 }
 
 module.exports = RootPaths;
