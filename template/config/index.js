@@ -25,16 +25,20 @@ const projectType = 'MHome';
 
 let projectRoot = '';
 const dirname = __dirname;
-if (dirname.indexOf('cosmeapi/assets') >= 0 ) {
+let projectName = 'cosmeapi';
+const assetsProjectRoot = path.resolve(dirname, '../../');
+if (assetsProjectRoot.endsWith('assets') ) {
   projectRoot = path.resolve(dirname, '../../../../');
+  projectName = path.basename(path.dirname(assetsProjectRoot));
 }
 
 const RootPaths = require('../build/lib/RootPaths');
 const rootPathsInstance = new RootPaths(projectRoot);
-const projectAssetsPath = rootPathsInstance.getModulesAssetsPath('cosmeapi', projectType);
+const projectAssetsPath = rootPathsInstance.getModulesAssetsPath(projectName, projectType);
 
 const devManifestPath = path.join(projectAssetsPath, `test/webpack-${pkg.name}.json`);
 const buildManifestPath = path.join(projectAssetsPath, `webpack-${pkg.name}.json`);
+// const domain = rootPathsInstance.getProjectDomain(projectName, 'URL_OPS_ADMIN');
 
 module.exports = {
   build: {
