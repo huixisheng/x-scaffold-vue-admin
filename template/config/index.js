@@ -19,6 +19,7 @@ function getIp() {
   return IPv4;
 }
 
+// @todo
 const PORT = 8080;
 const cdnAssestPath = 's/webpack/';
 const projectType = 'MHome';
