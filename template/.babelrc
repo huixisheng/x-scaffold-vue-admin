@@ -1,13 +1,10 @@
 {
   "presets": [
-    ["env", { "modules": false }],
-    "stage-2"
+    "@vue/app"
   ],
-  "plugins": ["transform-runtime"],
-  "comments": false,
-   "ignore": [
-      "src/vendors/*",
-      "node_modules/**",
-      "src/icons/*.js"
-   ]
+  "ignore": [
+    "src/vendors/*",
+    "node_modules/**",
+    "src/icons/*.js"
+  ]
 }

@@ -1,74 +1,38 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import { Layout, Error404 } from 'layout/panjiachen/index';
-
-// 以下子路由自己添加
-import childrenAuth from './children/auth';
-import childrenHello from './children/hello';
-import childrenHome from './children/home';
+import Vue from "vue";
+import Router from "vue-router";
+import Layout from '@/layouts/PanJiaChen/Layout';
+import Home from "@/views/Home.vue";
+import About from "@/views/About.vue";
 
 Vue.use(Router);
 
-// 配置路由前缀
-const BASE_PARH = '/f';
+/* Layout */
 
-export const constantRouterMap = [
-  {
-    path: '/login',
-    name: 'login',
-    component: childrenAuth[0]['component'],
-    hidden: true,
-  },
-  {
-    path: 'error',
-    name: 'error',
-    redirect: '/error/404',
+export const constantRouterMap = [{
+    path: "/",
+    name: "home",
     component: Layout,
+    alwaysShow: true,
+    meta: { title: 'home', icon: 'dashboard', noCache: true },
     children: [{
-      path: '404',
-      name: 'error404',
-      component: Error404,
-    }],
-    hidden: true,
+      name: 'index',
+      path: '/index',
+      component: Home,
+      meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
+    }]
   },
   {
-    // @todo path : '/' 配置主路由重新打开会为空
-    path: '/home',
-    alias: '/',
-    redirect: '/home/index',
-    name: 'index',
-    icon: 'dashboard',
-    component: Layout,
-    meta: { role: ['admin'], title: '控制台' },
-    // hidden: false,
-    children: childrenHome,
-  },
+    path: "/about",
+    name: "about",
+    component: About,
+    meta: { title: 'about', icon: 'dashboard', noCache: true }
+  }
 ];
 
+export const asyncRouterMap = [];
 
-export const asyncRouterMap = [
-  {
-    path: '/demo',
-    name: 'Hello',
-    icon: 'code',
-    meta: {
-      role: ['admin'],
-      title: '例子',
-    },
-    component: Layout,
-    children: childrenHello,
-  },
-  { path: '*', redirect: '/error', hidden: true },
-];
-
-
-// if (process.env.NODE_ENV === 'development') {
-// }
-
-export default new Router({
-  mode: 'history',
-  scrollBehavior: () => ({ y: 0 }),
+const router = new Router({
   routes: constantRouterMap,
-  base: BASE_PARH,
-  linkActiveClass: 'router-active',
 });
+
+export default router;

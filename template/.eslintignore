@@ -1,6 +1,0 @@
-!build/*.js
-config/*.js
-!.eslintrc.js
-src/icons/*.js
-src/vendors/*.js
-docs/theme/**/*.js
