@@ -16,7 +16,7 @@ const service = new HttpService({
   },
   success(response) {
     const data = response.data;
-    console.log('Model success', data);
+    // console.log('Model success', data);
     // TODO 后台返回内容处理
     if (data.status === '1') {
       return data;

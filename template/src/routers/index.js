@@ -1,8 +1,11 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Layout from '@/layouts/PanJiaChen/Layout';
+import childrenHome from './children/home';
 import Home from '@/views/Home.vue';
 import About from '@/views/About.vue';
+
+// 以下子路由自己添加
 
 Vue.use(Router);
 
@@ -30,7 +33,7 @@ export const constantRouterMap = [
           noCache: true
         }
       }
-    ]
+    ].concat(childrenHome)
   },
   {
     path: '/about',

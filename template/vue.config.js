@@ -25,6 +25,13 @@ module.exports = {
     // before: app => {}
   },
 
+  // externals: {
+  //   // 指定别名
+  //   // "moment": 'moment'
+  //   vue: 'Vue',
+  //   'element-ui': 'ELEMENT',
+  //   '@x-scaffold/adminui': 'AdminUi',
+  // },
   // resolve: {
   //   modules: [
   //     resolve('src'),
@@ -45,6 +52,8 @@ module.exports = {
   // },
   // TODO alias
 
+  // TODO proxyTable
+
   // tweak internal webpack configuration.
   // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
   chainWebpack: () => {},
@@ -62,33 +71,33 @@ module.exports = {
     // TODO development 模式不生成
     config.plugins.push(
       // https://npm.taobao.org/package/webpack-assets-manifest
-      new WebpackAssetsManifest({
-        output: path.join(__dirname, 'dist/manifest.json'),
-        publicPath: 'https://p1.cosmeapp.com/',
-        done(manifest) {
-          // eslint-disable-next-line
-          const { requestAssets } = require('request-assets');
-          const manifestPath = path.join(__dirname, 'dist/manifest.json');
-          const cacheManifestAssets = manifestPath.replace(
-            '.json',
-            '-cache.json'
-          );
-          requestAssets(
-            {
-              webpack: JSON.stringify(manifest.assets),
-              path: path.basename(manifestPath, '.json'),
-              module: 'test'
-            },
-            cacheManifestAssets
-          )
-            .then(body => {
-              console.log(body);
-            })
-            .catch(error => {
-              console.log(error);
-            });
-        }
-      })
+      // new WebpackAssetsManifest({
+      //   output: path.join(__dirname, 'dist/manifest.json'),
+      //   publicPath: 'https://p1.cosmeapp.com/',
+      //   done(manifest) {
+      //     // eslint-disable-next-line
+      //     const { requestAssets } = require('request-assets');
+      //     const manifestPath = path.join(__dirname, 'dist/manifest.json');
+      //     const cacheManifestAssets = manifestPath.replace(
+      //       '.json',
+      //       '-cache.json'
+      //     );
+      //     requestAssets(
+      //       {
+      //         webpack: JSON.stringify(manifest.assets),
+      //         path: path.basename(manifestPath, '.json'),
+      //         module: 'test'
+      //       },
+      //       cacheManifestAssets
+      //     )
+      //       .then(body => {
+      //         console.log(body);
+      //       })
+      //       .catch(error => {
+      //         console.log(error);
+      //       });
+      //   }
+      // })
     );
   }
 };
