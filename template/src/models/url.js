@@ -2,7 +2,24 @@
  * ajax请求的url链接配置
  * @author huixisheng
  */
-const BASE_PATH = 'https://www.easy-mock.com/mock/5ad8a552f3464d4f566fe012';
+const BASE_PATH = 'https://easy-mock.com/mock/59ba562fe0dc663341aa54c3/v1';
+
+// 后台用户模块
+const authUrl = {
+  authLogin: {
+    method: 'POST',
+    url: '/auth/login',
+  },
+  authLogout: {
+    method: 'GET',
+    url: '/auth/logout',
+  },
+  authUser: {
+    method: 'GET',
+    url: '/user/info',
+  },
+};
+
 const URL = {
   // 返回相关文档列表
   docsList: {
@@ -13,7 +30,8 @@ const URL = {
   addVueSource: {
     method: 'POST',
     url: '/add-vue-source',
-  }
+  },
+  ...authUrl,
 };
 
 // eslint-disable-next-line

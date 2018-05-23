@@ -12,6 +12,8 @@
   "dependencies": {
     "element-ui": "^2.3.8",
     "js-cookie": "^2.2.0",
+    "normalize.css": "^8.0.0",
+    "nprogress": "^0.2.0",
     "pack-axios": "0.0.4",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",

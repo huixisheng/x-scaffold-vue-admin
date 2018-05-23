@@ -1,5 +1,6 @@
 <template>
   <div class="menu-wrapper">
+    <div @click="redirectHome" class="logo"></div>
     <template v-for="item in routes" v-if="!item.hidden && item.children">
       <router-link v-if="hasOneShowingChildren(item.children) && !item.children[0].children&&!item.alwaysShow" :to="item.path+'/'+item.children[0].path"
         :key="item.children[0].name">
@@ -46,6 +47,11 @@ export default {
     }
   },
   methods: {
+    redirectHome() {
+      this.$router.push({
+        name: 'index',
+      });
+    },
     hasOneShowingChildren(children) {
       const showingChildren = children.filter(item => {
         return !item.hidden
@@ -62,3 +68,7 @@ export default {
 }
 </script>
 
+<style lang="css">
+.logo { cursor: pointer; width: 180px; height: 80px; background: url(http://img0.cosmeapp.com/FuAKZmmejulLXcZ36823K1dHgjDE) no-repeat center center; background-size: 156px 41px; }
+.el-menu--collapse .logo { height: 40px; width: 36px; background-image: url(http://img0.cosmeapp.com/FrWy8RF_3tqco897qvJm4cXJ2pXF); background-size: 20px 20px;  }
+</style>

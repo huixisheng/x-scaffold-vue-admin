@@ -11,11 +11,13 @@ function isString(o) {
 const service = new HttpService({
   timeout: 10000,
   before(config) {
-    // 请求前统一处理，比如添加jwt
+    // 请求前统一处理，比如添加jwt TODO
     return config;
   },
   success(response) {
     const data = response.data;
+    console.log('Model success', data);
+    // TODO 后台返回内容处理
     if (data.status === '1') {
       return data;
     } else {
