@@ -10,7 +10,7 @@
 
 <style lang="less">
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -31,7 +31,7 @@
   // 主体区域
   .main-container {
     min-height: 100%;
-    transition: margin-left .28s;
+    transition: margin-left 0.28s;
     margin-left: 180px;
   }
   // 侧边栏
@@ -48,7 +48,8 @@
     overflow: hidden;
     //reset element-ui css
     .horizontal-collapse-transition {
-      transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
+      transition: 0s width ease-in-out, 0s padding-left ease-in-out,
+        0s padding-right ease-in-out;
     }
     .scrollbar-wrapper {
       height: calc(100% + 15px);
@@ -89,7 +90,7 @@
     }
     .el-submenu {
       overflow: hidden;
-      &>.el-submenu__title {
+      & > .el-submenu__title {
         padding-left: 10px !important;
         .el-submenu__icon-arrow {
           display: none;
@@ -98,8 +99,8 @@
     }
     .el-menu--collapse {
       .el-submenu {
-        &>.el-submenu__title {
-          &>span {
+        & > .el-submenu__title {
+          & > span {
             height: 0;
             width: 0;
             overflow: hidden;
@@ -110,7 +111,7 @@
       }
     }
   }
-  .sidebar-container .nest-menu .el-submenu>.el-submenu__title,
+  .sidebar-container .nest-menu .el-submenu > .el-submenu__title,
   .sidebar-container .el-submenu .el-menu-item {
     min-width: 180px !important;
     background-color: $subMenuBg !important;
@@ -128,7 +129,7 @@
       margin-left: 0px;
     }
     .sidebar-container {
-      transition: transform .28s;
+      transition: transform 0.28s;
       width: 180px !important;
     }
     &.hideSidebar {
@@ -145,5 +146,4 @@
     }
   }
 }
-
 </style>

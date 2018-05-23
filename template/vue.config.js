@@ -4,9 +4,9 @@ const portFinderSync = require('portfinder-sync');
 const PORT = portFinderSync.getPort(8080);
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 
-function resolve(dir) {
-  return path.join(__dirname, dir);
-}
+// function resolve(dir) {
+//   return path.join(__dirname, dir);
+// }
 
 module.exports = {
   lintOnSave: true,
@@ -18,10 +18,10 @@ module.exports = {
     port: PORT,
     https: false,
     hotOnly: false,
-    // historyApiFallback: true,
+    historyApiFallback: true,
     noInfo: true,
     // See https://github.com/vuejs/vue-cli/blob/dev/docs/cli-service.md#configuring-proxy
-    proxy: null, // string | Object
+    proxy: null // string | Object
     // before: app => {}
   },
 
@@ -48,7 +48,7 @@ module.exports = {
   // tweak internal webpack configuration.
   // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
   chainWebpack: () => {},
-  configureWebpack: (config) => {
+  configureWebpack: config => {
     /**{ symlinks: true,
     alias:
    { '@': '/Users/huixisheng/x-scaffold/x-scaffold-vue-admin/template/src',
@@ -69,18 +69,26 @@ module.exports = {
           // eslint-disable-next-line
           const { requestAssets } = require('request-assets');
           const manifestPath = path.join(__dirname, 'dist/manifest.json');
-          const cacheManifestAssets = manifestPath.replace('.json', '-cache.json');
-          // requestAssets({
-          //   webpack: JSON.stringify(manifest.assets),
-          //   path: path.basename(manifestPath, '.json'),
-          //   module: 'test',
-          // }, cacheManifestAssets).then((body) => {
-          //   console.log(body);
-          // }).catch((error) => {
-          //   console.log(error);
-          // });
-        },
+          const cacheManifestAssets = manifestPath.replace(
+            '.json',
+            '-cache.json'
+          );
+          requestAssets(
+            {
+              webpack: JSON.stringify(manifest.assets),
+              path: path.basename(manifestPath, '.json'),
+              module: 'test'
+            },
+            cacheManifestAssets
+          )
+            .then(body => {
+              console.log(body);
+            })
+            .catch(error => {
+              console.log(error);
+            });
+        }
       })
     );
-  },
+  }
 };

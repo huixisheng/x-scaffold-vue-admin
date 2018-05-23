@@ -38,9 +38,9 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import Breadcrumb from './Breadcrumb'
-import Hamburger from './Hamburger'
+import { mapGetters } from 'vuex';
+import Breadcrumb from './Breadcrumb';
+import Hamburger from './Hamburger';
 // import ErrorLog from '@/ErrorLog'
 // import Screenfull from './Screenfull'
 // import LangSelect from '@/components/LangSelect'
@@ -49,33 +49,29 @@ import Hamburger from './Hamburger'
 export default {
   components: {
     Breadcrumb,
-    Hamburger,
+    Hamburger
     // ErrorLog,
     // Screenfull,
     // LangSelect,
     // ThemePicker
   },
   computed: {
-    ...mapGetters([
-      'sidebar',
-      'name',
-      'avatar'
-    ])
+    ...mapGetters(['sidebar', 'name', 'avatar'])
   },
   methods: {
     $t(name) {
       return name;
     },
     toggleSideBar() {
-      this.$store.dispatch('toggleSideBar')
+      this.$store.dispatch('toggleSideBar');
     },
     logout() {
       this.$store.dispatch('LogOut').then(() => {
-        location.reload()// In order to re-instantiate the vue-router object to avoid bugs
-      })
+        location.reload(); // In order to re-instantiate the vue-router object to avoid bugs
+      });
     }
   }
-}
+};
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
@@ -89,7 +85,7 @@ export default {
     float: left;
     padding: 0 10px;
   }
-  .breadcrumb-container{
+  .breadcrumb-container {
     float: left;
   }
   .errLog-container {
@@ -99,8 +95,8 @@ export default {
   .right-menu {
     float: right;
     height: 100%;
-    &:focus{
-     outline: none;
+    &:focus {
+      outline: none;
     }
     .right-menu-item {
       display: inline-block;
@@ -109,7 +105,7 @@ export default {
     .screenfull {
       height: 20px;
     }
-    .international{
+    .international {
       vertical-align: top;
     }
     .theme-switch {

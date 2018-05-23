@@ -8,21 +8,24 @@ import modelInstance from '@/models/index';
 
 export default {
   name: 'about',
-  components: {
-
-  },
+  components: {},
   mounted() {
-    modelInstance.run('addVueSource', {}).then((data) => {
-      console.log(data);
-    }).catch((error) => {
-      console.log('error', error);
-    });
-    modelInstance.run('docsList', {}).then((data) => {
-      console.log(data);
-    }).catch((error) => {
-      console.log('error', error);
-    });
-  },
+    modelInstance
+      .run('addVueSource', {})
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.log('error', error);
+      });
+    modelInstance
+      .run('docsList', {})
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.log('error', error);
+      });
+  }
 };
-
 </script>

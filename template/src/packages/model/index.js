@@ -27,9 +27,8 @@ const service = new HttpService({
   error(error) {
     // TODO 返回统一
     return Promise.reject(error);
-  },
+  }
 });
-
 
 export default class Model {
   constructor(urls, httpService = service) {
@@ -57,7 +56,7 @@ export default class Model {
       list[key] = {
         method,
         methodParamsKey,
-        url,
+        url
       };
     });
   }
@@ -67,7 +66,7 @@ export default class Model {
     const modelNameItem = this.list[modelName];
     const serviceParams = {
       url: modelNameItem.url,
-      method: modelNameItem.method,
+      method: modelNameItem.method
     };
     serviceParams[modelNameItem.methodParamsKey] = params;
     console.log('serviceParams', serviceParams);
@@ -77,9 +76,7 @@ export default class Model {
   addModel() {
     // TODO
   }
-
 }
-
 
 // model.run(modelName, params).then(() => {
 

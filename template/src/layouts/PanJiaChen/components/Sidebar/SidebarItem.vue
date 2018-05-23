@@ -49,23 +49,23 @@ export default {
   methods: {
     redirectHome() {
       this.$router.push({
-        name: 'index',
+        name: 'index'
       });
     },
     hasOneShowingChildren(children) {
       const showingChildren = children.filter(item => {
-        return !item.hidden
-      })
+        return !item.hidden;
+      });
       if (showingChildren.length === 1) {
-        return true
+        return true;
       }
-      return false
+      return false;
     },
     generateTitle(title) {
       return title;
-    },
+    }
   }
-}
+};
 </script>
 
 <style lang="css">

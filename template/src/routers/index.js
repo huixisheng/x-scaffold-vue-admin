@@ -8,7 +8,8 @@ Vue.use(Router);
 
 /* Layout */
 
-export const constantRouterMap = [{
+export const constantRouterMap = [
+  {
     path: '',
     name: 'home',
     component: Layout,
@@ -18,16 +19,18 @@ export const constantRouterMap = [{
       icon: 'dashboard',
       noCache: true
     },
-    children: [{
-      name: 'index',
-      path: 'index',
-      component: Home,
-      meta: {
-        title: '首页',
-        icon: 'dashboard',
-        noCache: true
+    children: [
+      {
+        name: 'index',
+        path: 'index',
+        component: Home,
+        meta: {
+          title: '首页',
+          icon: 'dashboard',
+          noCache: true
+        }
       }
-    }]
+    ]
   },
   {
     path: '/about',
@@ -38,23 +41,25 @@ export const constantRouterMap = [{
       icon: 'dashboard',
       noCache: true
     },
-    children: [{
-      name: 'about',
-      path: 'about',
-      component: About,
-      meta: {
-        title: '关于',
-        icon: 'dashboard',
-        noCache: true
+    children: [
+      {
+        name: 'about',
+        path: 'about',
+        component: About,
+        meta: {
+          title: '关于',
+          icon: 'dashboard',
+          noCache: true
+        }
       }
-    }]
+    ]
   }
 ];
 
 export const asyncRouterMap = [];
 
 const router = new Router({
-  routes: constantRouterMap,
+  routes: constantRouterMap
 });
 
 export default router;

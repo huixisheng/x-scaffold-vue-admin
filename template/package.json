@@ -10,7 +10,7 @@
     "test:e2e": "vue-cli-service test:e2e"
   },
   "dependencies": {
-    "element-ui": "^2.3.8",
+    "element-ui": "^2.3.9",
     "js-cookie": "^2.2.0",
     "normalize.css": "^8.0.0",
     "nprogress": "^0.2.0",
@@ -29,13 +29,16 @@
     "@vue/test-utils": "^1.0.0-beta.10",
     "chai": "^4.1.2",
     "ip": "^1.1.5",
-    "less": "^2.7.3",
+    "less": "^3.0.4",
     "less-loader": "^4.0.5",
     "node-sass": "^4.9.0",
     "portfinder-sync": "0.0.2",
     "sass-loader": "^7.0.1",
     "vue-template-compiler": "^2.5.13",
     "webpack-assets-manifest": "^3.0.1"
+  },
+  "prettier": {
+    "singleQuote": true
   },
   "browserslist": [
     "> 1%",
