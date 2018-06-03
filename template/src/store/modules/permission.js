@@ -47,6 +47,7 @@ const permission = {
       return new Promise(resolve => {
         const { roles } = data;
         let accessedRouters;
+        // TODO 过滤
         if (roles.indexOf('admin') >= 0) {
           accessedRouters = asyncRouterMap;
         } else {

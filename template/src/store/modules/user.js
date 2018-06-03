@@ -95,7 +95,7 @@ const user = {
       });
     }
 
-    // 动态修改权限
+    // 动态修改权限 TODO
     // ChangeRoles({ commit }, role) {
     //   return new Promise(resolve => {
     //     commit('SET_TOKEN', role);
