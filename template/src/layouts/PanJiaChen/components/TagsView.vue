@@ -1,16 +1,16 @@
 <template>
   <div class="tags-view-container">
     <scroll-pane class='tags-view-wrapper' ref='scrollPane'>
-      <router-link ref='tag' class="tags-view-item" :class="isActive(tag)?'active':''" v-for="tag in Array.from(visitedViews)"
+      <router-link ref='tag' class="tags-view-item" :class="isActive(tag) ? 'active': ''" v-for="tag in Array.from(visitedViews)"
         :to="tag.path" :key="tag.path" @contextmenu.prevent.native="openMenu(tag,$event)">
-        {{generateTitle(tag.title)}}
+        <span v-text="generateTitle(tag.title)"></span>
         <span class='el-icon-close' @click.prevent.stop='closeSelectedTag(tag)'></span>
       </router-link>
     </scroll-pane>
     <ul class='contextmenu' v-show="visible" :style="{left:left+'px',top:top+'px'}">
-      <li @click="closeSelectedTag(selectedTag)">{{$t('tagsView.close')}}</li>
-      <li @click="closeOthersTags">{{$t('tagsView.closeOthers')}}</li>
-      <li @click="closeAllTags">{{$t('tagsView.closeAll')}}</li>
+      <li @click="closeSelectedTag(selectedTag)" v-text="$t('tagsView.close')"></li>
+      <li @click="closeOthersTags" v-text="$t('tagsView.closeOthers')"></li>
+      <li @click="closeAllTags" v-text="$t('tagsView.closeAll')"></li>
     </ul>
   </div>
 </template>

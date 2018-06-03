@@ -1,13 +1,13 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import routerConfig from './config';
 import Layout from '@/layouts/PanJiaChen/Layout';
-import childrenHome from './children/home';
-import Home from '@/views/Home.vue';
-import About from '@/views/About.vue';
 import ErrorPage404 from '@/views/errorPage/404';
 import ErrorPage401 from '@/views/errorPage/401';
 
 // 以下子路由自己添加
+import childrenDev from './children/dev';
+// import childrenErrorPage from './children/error-page';
 
 Vue.use(Router);
 
@@ -26,55 +26,22 @@ export const constantRouterMap = [
   },
   {
     path: '',
-    name: 'home',
+    name: 'dev',
     component: Layout,
     alwaysShow: true,
+    hidden: false,
     meta: {
       title: 'dashboard',
       icon: 'homepage',
       roles: ['editor', 'admin'],
       noCache: true,
     },
-    children: [
-      {
-        name: 'index',
-        path: 'index',
-        component: Home,
-        meta: {
-          roles: ['admin', 'editor'],
-          title: 'index',
-          icon: 'homepage',
-          noCache: true
-        }
-      }
-    ].concat(childrenHome)
+    children: routerConfig.setRouter(childrenDev),
   },
-  {
-    path: '/about',
-    name: 'about',
-    component: Layout,
-    meta: {
-      title: 'about',
-      icon: 'homepage',
-      noCache: true
-    },
-    children: [
-      {
-        name: 'about',
-        path: 'about',
-        component: About,
-        meta: {
-          title: 'about',
-          icon: 'homepage',
-          noCache: true
-        }
-      }
-    ]
-  }
 ];
 
 export const asyncRouterMap = [
-  { path: '*', redirect: '/404', hidden: true }
+  { path: '*', redirect: '/404', hidden: true },
 ];
 
 const router = new Router({

@@ -2,7 +2,7 @@
   <div class="about">
     <ul>
       <li v-for="item in list">
-        <a :href="item.url">{{item.title}}</a>
+        <a :href="item.url" v-text="item.title"></a>
       </li>
     </ul>
   </div>
@@ -12,7 +12,6 @@ import modelInstance from '@/models/index';
 
 export default {
   name: 'list',
-  title: '列表',
   data() {
     return {
       list: []
