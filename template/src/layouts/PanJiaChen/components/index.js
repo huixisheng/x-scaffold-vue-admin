@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import IconSvg from './SvgIcon';
+import '../styles/index.scss';
 
 export { default as Navbar } from './Navbar';
 export { default as Sidebar } from './Sidebar/index.vue';

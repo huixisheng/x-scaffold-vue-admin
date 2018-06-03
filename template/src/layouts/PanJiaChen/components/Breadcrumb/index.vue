@@ -10,7 +10,7 @@
 </template>
 
 <script>
-// import { generateTitle } from '@/utils/i18n'
+import { generateTitle } from '../../i18n'
 
 export default {
   created() {
@@ -27,9 +27,7 @@ export default {
     }
   },
   methods: {
-    generateTitle(title) {
-      return title;
-    },
+    generateTitle,
     getBreadcrumb() {
       let matched = this.$route.matched.filter(item => item.name);
       const first = matched[0];

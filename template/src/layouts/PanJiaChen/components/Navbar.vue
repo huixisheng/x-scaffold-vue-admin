@@ -29,7 +29,7 @@
             </el-dropdown-item>
           </router-link> -->
           <el-dropdown-item divided>
-            <span @click="logout" style="display:block;">登出</span>
+            <span @click="logout" style="display:block;">{{$t('navbar.logOut')}}</span>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
@@ -59,9 +59,6 @@ export default {
     ...mapGetters(['sidebar', 'name', 'avatar'])
   },
   methods: {
-    $t(name) {
-      return name;
-    },
     toggleSideBar() {
       this.$store.dispatch('toggleSideBar');
     },

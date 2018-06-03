@@ -3,8 +3,7 @@
     "@vue/app"
   ],
   "ignore": [
-    "src/vendors/*",
     "node_modules/**",
-    "src/icons/*.js"
+    "src/icons/iconfont.js"
   ]
 }

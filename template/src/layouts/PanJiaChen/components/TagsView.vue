@@ -17,7 +17,7 @@
 
 <script>
 import ScrollPane from './ScrollPane';
-// import { generateTitle } from '@/utils/i18n'
+import { generateTitle } from '../i18n'
 
 export default {
   components: { ScrollPane },
@@ -51,12 +51,7 @@ export default {
     this.addViewTags();
   },
   methods: {
-    $t(name) {
-      return name;
-    },
-    generateTitle(name) {
-      return name;
-    }, // generateTitle by vue-i18n
+    generateTitle, // by vue-i18n
     generateRoute() {
       if (this.$route.name) {
         return this.$route;

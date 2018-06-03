@@ -33,7 +33,7 @@
 </template>
 
 <script>
-// import { generateTitle } from '@/utils/i18n'
+import { generateTitle } from '../../i18n'
 
 export default {
   name: 'SidebarItem',
@@ -61,9 +61,7 @@ export default {
       }
       return false;
     },
-    generateTitle(title) {
-      return title;
-    }
+    generateTitle,
   }
 };
 </script>

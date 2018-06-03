@@ -8,7 +8,8 @@ routerList.push({
   path: 'list',
   component: HomeList,
   meta: {
-    title: '列表',
+    roles: ['editor'],
+    title: 'homeList',
   },
   name: 'homeList',
   hidden: false,

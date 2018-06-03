@@ -4,6 +4,8 @@ import Layout from '@/layouts/PanJiaChen/Layout';
 import childrenHome from './children/home';
 import Home from '@/views/Home.vue';
 import About from '@/views/About.vue';
+import ErrorPage404 from '@/views/errorPage/404';
+import ErrorPage401 from '@/views/errorPage/401';
 
 // 以下子路由自己添加
 
@@ -13,14 +15,25 @@ Vue.use(Router);
 
 export const constantRouterMap = [
   {
+    path: '/404',
+    component: ErrorPage404,
+    hidden: true,
+  },
+  {
+    path: '/401',
+    component: ErrorPage401,
+    hidden: true,
+  },
+  {
     path: '',
     name: 'home',
     component: Layout,
     alwaysShow: true,
     meta: {
       title: 'dashboard',
-      icon: 'dashboard',
-      noCache: true
+      icon: 'homepage',
+      roles: ['editor', 'admin'],
+      noCache: true,
     },
     children: [
       {
@@ -28,8 +41,9 @@ export const constantRouterMap = [
         path: 'index',
         component: Home,
         meta: {
-          title: '首页',
-          icon: 'dashboard',
+          roles: ['admin', 'editor'],
+          title: 'index',
+          icon: 'homepage',
           noCache: true
         }
       }
@@ -40,8 +54,8 @@ export const constantRouterMap = [
     name: 'about',
     component: Layout,
     meta: {
-      title: '关于',
-      icon: 'dashboard',
+      title: 'about',
+      icon: 'homepage',
       noCache: true
     },
     children: [
@@ -50,8 +64,8 @@ export const constantRouterMap = [
         path: 'about',
         component: About,
         meta: {
-          title: '关于',
-          icon: 'dashboard',
+          title: 'about',
+          icon: 'homepage',
           noCache: true
         }
       }
@@ -59,9 +73,13 @@ export const constantRouterMap = [
   }
 ];
 
-export const asyncRouterMap = [];
+export const asyncRouterMap = [
+  { path: '*', redirect: '/404', hidden: true }
+];
 
 const router = new Router({
+  mode: 'history',
+  // TODO base
   routes: constantRouterMap
 });
 

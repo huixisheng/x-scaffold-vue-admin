@@ -2,13 +2,13 @@ import Vue from 'vue';
 import 'normalize.css/normalize.css'; // A modern alternative to CSS resets
 import Element from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+// import '@/icons/iconfont';
 
-// import '@/styles/index.scss' // global css
 import App from './App';
 import router from './routers/index';
 import store from './store/index';
 
-// import i18n from './lang' // Internationalization
+import i18n from './lang';
 // import './icons' // icon
 import './permission'; // permission control
 
@@ -29,5 +29,6 @@ new Vue({
   el: '#app',
   router,
   store,
+  i18n,
   render: h => h(App)
 });
