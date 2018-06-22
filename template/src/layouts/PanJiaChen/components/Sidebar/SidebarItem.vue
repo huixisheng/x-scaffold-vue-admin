@@ -2,7 +2,6 @@
   <div class="menu-wrapper">
     <div @click="redirectHome" class="logo"></div>
     <template v-for="item in routes" v-if="!item.hidden && item.children">
-      <div>{{item}}</div>
       <router-link v-if="hasOneShowingChildren(item.children) && !item.children[0].children&&!item.alwaysShow" :to="item.path + '/' + item.children[0].path"
         :key="item.children[0].name">
         <el-menu-item :index="item.path + '/' + item.children[0].path" :class="{'submenu-title-noDropdown':!isNest}">
@@ -13,6 +12,7 @@
 
       <el-submenu v-else :index="item.name || item.path" :key="item.name">
         <template slot="title">
+          <span></span>
           <svg-icon v-if="item.meta && item.meta.icon" :icon-class="item.meta.icon"></svg-icon>
           <span v-if="item.meta && item.meta.title" slot="title" v-text="generateTitle(item.meta.title)"></span>
         </template>
@@ -33,37 +33,35 @@
 </template>
 
 <script>
-import { generateTitle } from '../../i18n'
+import { generateTitle } from '../../i18n';
 
 export default {
   name: 'SidebarItem',
   props: {
     routes: {
-      type: Array
+      type: Array,
     },
     isNest: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   methods: {
     redirectHome() {
       // TODO
       this.$router.push({
-        name: 'index'
+        name: 'dashboard',
       });
     },
     hasOneShowingChildren(children) {
-      const showingChildren = children.filter(item => {
-        return !item.hidden;
-      });
+      const showingChildren = children.filter((item) => !item.hidden);
       if (showingChildren.length === 1) {
         return true;
       }
       return false;
     },
     generateTitle,
-  }
+  },
 };
 </script>
 

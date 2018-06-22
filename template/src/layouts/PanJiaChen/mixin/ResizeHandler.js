@@ -1,4 +1,4 @@
-import store from '@/store';
+import store from 'src/store';
 
 const { body } = document;
 const WIDTH = 1024;
@@ -10,7 +10,7 @@ export default {
       if (this.device === 'mobile' && this.sidebar.opened) {
         store.dispatch('closeSideBar', { withoutAnimation: false });
       }
-    }
+    },
   },
   beforeMount() {
     window.addEventListener('resize', this.resizeHandler);
@@ -36,6 +36,6 @@ export default {
           store.dispatch('closeSideBar', { withoutAnimation: true });
         }
       }
-    }
-  }
+    },
+  },
 };

@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import app from '@/layouts/PanJiaChen/store/modules/app';
-import tagsView from '@/layouts/PanJiaChen/store/modules/tagsView';
+import app from 'src/layouts/PanJiaChen/store/modules/app';
+import tagsView from 'src/layouts/PanJiaChen/store/modules/tagsView';
 // import errorLog from './modules/errorLog'
 import permission from './modules/permission';
 // import tagsView from './modules/tagsView'
@@ -16,9 +16,9 @@ const store = new Vuex.Store({
     // errorLog,
     permission,
     tagsView,
-    user
+    user,
   },
-  getters
+  getters,
 });
 
 export default store;

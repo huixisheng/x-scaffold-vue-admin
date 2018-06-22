@@ -32,14 +32,14 @@ export default {
     return {
       // img_404,
       // img_404_cloud
-    }
+    };
   },
   computed: {
     message() {
-      return '特朗普说这个页面你不能进......'
-    }
-  }
-}
+      return '特朗普说这个页面你不能进......';
+    },
+  },
+};
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>

@@ -28,7 +28,7 @@
 
 <script>
 // import errGif from '@/assets/401_images/401.gif'
-const errGif = 'http://img0.cosmeapp.com/FjumzaO9JNued2MawDtPpGcdJ7hA'
+const errGif = 'http://img0.cosmeapp.com/FjumzaO9JNued2MawDtPpGcdJ7hA';
 
 export default {
   name: 'page401',
@@ -36,19 +36,19 @@ export default {
     return {
       errGif: errGif + '?' + +new Date(),
       ewizardClap: 'https://wpimg.wallstcn.com/007ef517-bafd-4066-aae4-6883632d9646',
-      dialogVisible: false
-    }
+      dialogVisible: false,
+    };
   },
   methods: {
     back() {
       if (this.$route.query.noGoBack) {
-        this.$router.push({ path: '/index' })
+        this.$router.push({ path: '/index' });
       } else {
-        this.$router.go(-1)
+        this.$router.go(-1);
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>

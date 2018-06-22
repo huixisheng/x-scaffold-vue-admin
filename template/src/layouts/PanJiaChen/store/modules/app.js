@@ -4,13 +4,13 @@ const app = {
   state: {
     sidebar: {
       opened: !+Cookies.get('sidebarStatus'),
-      withoutAnimation: false
+      withoutAnimation: false,
     },
     device: 'desktop',
-    language: Cookies.get('language') || 'zh'
+    language: Cookies.get('language') || 'zh',
   },
   mutations: {
-    TOGGLE_SIDEBAR: state => {
+    TOGGLE_SIDEBAR: (state) => {
       if (state.sidebar.opened) {
         Cookies.set('sidebarStatus', 1);
       } else {
@@ -30,7 +30,7 @@ const app = {
     SET_LANGUAGE: (state, language) => {
       state.language = language;
       Cookies.set('language', language);
-    }
+    },
   },
   actions: {
     toggleSideBar({ commit }) {
@@ -44,8 +44,8 @@ const app = {
     },
     setLanguage({ commit }, language) {
       commit('SET_LANGUAGE', language);
-    }
-  }
+    },
+  },
 };
 
 export default app;

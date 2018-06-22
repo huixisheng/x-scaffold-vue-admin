@@ -8,30 +8,30 @@ const BASE_PATH = 'https://easy-mock.com/mock/59ba562fe0dc663341aa54c3/v1';
 const authUrl = {
   authLogin: {
     method: 'POST',
-    url: '/auth/login'
+    url: '/auth/login',
   },
   authLogout: {
     method: 'GET',
-    url: '/auth/logout'
+    url: '/auth/logout',
   },
   authUser: {
     method: 'GET',
-    url: '/user/info'
-  }
+    url: '/user/info',
+  },
 };
 
 const URL = {
   // 返回相关文档列表
   docsList: {
     method: 'GET',
-    url: '/docs-list'
+    url: '/docs-list',
   },
   // 新增Vue资源
   addVueSource: {
     method: 'POST',
-    url: '/add-vue-source'
+    url: '/add-vue-source',
   },
-  ...authUrl
+  ...authUrl,
 };
 
 // eslint-disable-next-line

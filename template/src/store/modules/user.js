@@ -1,5 +1,5 @@
-import modelInstance from '@/models/index';
-import { getToken, removeToken } from '@/utils/auth';
+import modelInstance from 'src/models/index';
+import { getToken, removeToken } from 'src/utils/auth';
 
 const user = {
   state: {
@@ -12,8 +12,8 @@ const user = {
     introduction: '',
     roles: [],
     setting: {
-      articlePlatform: []
-    }
+      articlePlatform: [],
+    },
   },
 
   mutations: {
@@ -40,7 +40,7 @@ const user = {
     },
     SET_ROLES: (state, roles) => {
       state.roles = roles;
-    }
+    },
   },
 
   actions: {
@@ -49,9 +49,8 @@ const user = {
       return new Promise((resolve, reject) => {
         modelInstance
           .run('authUser', {})
-          .then(response => {
+          .then((response) => {
             const data = response.data;
-
             if (data.roles && data.roles.length > 0) {
               // 验证返回的roles是否是一个非空数组
               commit('SET_ROLES', data.roles);
@@ -62,38 +61,38 @@ const user = {
             commit('SET_NAME', data.name);
             commit('SET_AVATAR', data.avatar);
             commit('SET_INTRODUCTION', data.introduction);
-            resolve(response);
+            resolve(data);
           })
-          .catch(error => {
-            console.log('error', error);
+          .catch((error) => {
             reject(error);
           });
       });
     },
     // 登出
-    // LogOut({ commit, state }) {
-    //   return new Promise((resolve, reject) => {
-    //     logout(state.token)
-    //       .then(() => {
-    //         commit('SET_TOKEN', '');
-    //         commit('SET_ROLES', []);
-    //         removeToken();
-    //         resolve();
-    //       })
-    //       .catch(error => {
-    //         reject(error);
-    //       });
-    //   });
-    // },
+    LogOut({ commit, state }) {
+      return new Promise((resolve, reject) => {
+        modelInstance
+          .run('authLogout', {})
+          .then(() => {
+            commit('SET_TOKEN', '');
+            commit('SET_ROLES', []);
+            removeToken();
+            resolve();
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
+    },
 
     // 前端 登出
     FedLogOut({ commit }) {
-      return new Promise(resolve => {
+      return new Promise((resolve) => {
         commit('SET_TOKEN', '');
         removeToken();
         resolve();
       });
-    }
+    },
 
     // 动态修改权限 TODO
     // ChangeRoles({ commit }, role) {
@@ -110,7 +109,7 @@ const user = {
     //     });
     //   });
     // }
-  }
+  },
 };
 
 export default user;

@@ -7,7 +7,8 @@
     <div class="right-menu">
       <el-dropdown class="avatar-container right-menu-item" trigger="click">
         <div class="avatar-wrapper">
-          <img class="user-avatar" :src="avatar">
+          <span v-text="name"></span>
+          <!-- <img class="user-avatar" :src="avatar"> -->
           <i class="el-icon-caret-bottom"></i>
         </div>
         <el-dropdown-menu slot="dropdown">
@@ -24,22 +25,22 @@
 import { mapGetters } from 'vuex';
 import Breadcrumb from './Breadcrumb';
 import Hamburger from './Hamburger';
-// import ErrorLog from '@/ErrorLog'
+// import ErrorLog from 'src/ErrorLog'
 // import Screenfull from './Screenfull'
-// import LangSelect from '@/components/LangSelect'
-// import ThemePicker from '@/components/ThemePicker'
+// import LangSelect from 'src/components/LangSelect'
+// import ThemePicker from 'src/components/ThemePicker'
 
 export default {
   components: {
     Breadcrumb,
-    Hamburger
+    Hamburger,
     // ErrorLog,
     // Screenfull,
     // LangSelect,
     // ThemePicker
   },
   computed: {
-    ...mapGetters(['sidebar', 'name', 'avatar'])
+    ...mapGetters(['sidebar', 'name', 'avatar']),
   },
   methods: {
     toggleSideBar() {
@@ -47,10 +48,10 @@ export default {
     },
     logout() {
       this.$store.dispatch('LogOut').then(() => {
-        location.reload(); // In order to re-instantiate the vue-router object to avoid bugs
+        window.location.reload(); // In order to re-instantiate the vue-router object to avoid bugs
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -96,7 +97,7 @@ export default {
       margin-right: 30px;
       .avatar-wrapper {
         cursor: pointer;
-        margin-top: 5px;
+        // margin-top: 5px;
         position: relative;
         .user-avatar {
           width: 40px;
@@ -106,7 +107,7 @@ export default {
         .el-icon-caret-bottom {
           position: absolute;
           right: -20px;
-          top: 15px;
+          top: 20px;
           font-size: 12px;
         }
       }

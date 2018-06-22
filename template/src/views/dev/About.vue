@@ -12,20 +12,20 @@ export default {
   mounted() {
     modelInstance
       .run('addVueSource', {})
-      .then(data => {
+      .then((data) => {
         console.log(data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log('error', error);
       });
     modelInstance
       .run('docsList', {})
-      .then(data => {
+      .then((data) => {
         console.log(data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log('error', error);
       });
-  }
+  },
 };
 </script>

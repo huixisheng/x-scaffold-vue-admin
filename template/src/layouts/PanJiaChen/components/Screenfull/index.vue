@@ -22,20 +22,20 @@ export default {
   props: {
     width: {
       type: Number,
-      default: 22
+      default: 22,
     },
     height: {
       type: Number,
-      default: 22
+      default: 22,
     },
     fill: {
       type: String,
-      default: '#48576a'
-    }
+      default: '#48576a',
+    },
   },
   data() {
     return {
-      isFullscreen: false
+      isFullscreen: false,
     };
   },
   methods: {
@@ -43,13 +43,13 @@ export default {
       if (!screenfull.enabled) {
         this.$message({
           message: 'you browser can not work',
-          type: 'warning'
+          type: 'warning',
         });
-        return false;
+        return;
       }
       screenfull.toggle();
-    }
-  }
+    },
+  },
 };
 </script>
 

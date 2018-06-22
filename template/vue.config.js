@@ -1,103 +1,122 @@
 const path = require('path');
-const IP = require('ip').address();
+const fs = require('fs');
 const portFinderSync = require('portfinder-sync');
-const PORT = portFinderSync.getPort(8080);
-const WebpackAssetsManifest = require('webpack-assets-manifest');
+const AutoDllPlugin = require('autodll-webpack-plugin');
 
-// function resolve(dir) {
-//   return path.join(__dirname, dir);
-// }
+const PORT = portFinderSync.getPort(8080);
+const { IP } = require('./config/utils');
+const proxyTable = require('./config/proxy-table');
+const qiniuWebpackPlugin = require('./config/qiniu-plugin');
+const { getEnvConfig, publicPath } = require('./config/utils');
+const webpackAssetsManifessInstance = require('./config/deploy-manifest');
+
+function resolve(dir) {
+  return path.join(__dirname, dir);
+}
 
 module.exports = {
   lintOnSave: true,
 
   // configure webpack-dev-server behavior
   devServer: {
+    // contentBase: path.join(__dirname, 'public'),
+    watchOptions: {
+      poll: true,
+    },
+    progress: true,
     open: true,
-    host: IP,
+    openPage: './',
+    // TDOO fix socket实时预览的问题
+    // host: IP,
+    // bonjour: true,
+    stats: 'errors-only',
     port: PORT,
     https: false,
     hotOnly: false,
+    overlay: {
+      warnings: true,
+      errors: true,
+    },
+    // https://webpack.docschina.org/configuration/dev-server/#devserver-uselocalip
+    useLocalIp: true,
     historyApiFallback: true,
     noInfo: true,
     // See https://github.com/vuejs/vue-cli/blob/dev/docs/cli-service.md#configuring-proxy
-    proxy: null // string | Object
-    // before: app => {}
+    proxy: proxyTable, // string | Object
+    before: (app) => {
+      // console.log(app.request);
+      // console.log(app.response);
+    },
   },
-
-  // externals: {
-  //   // 指定别名
-  //   // "moment": 'moment'
-  //   vue: 'Vue',
-  //   'element-ui': 'ELEMENT',
-  //   '@x-scaffold/adminui': 'AdminUi',
-  // },
-  // resolve: {
-  //   modules: [
-  //     resolve('src'),
-  //     resolve('node_modules'),
-  //   ],
-  //   extensions: ['.js', '.vue', '.json'],
-  //   alias: {
-  //     vue$: 'vue/dist/vue.esm.js',
-  //     src: resolve('src'),
-  //     // @: resolve('src'),
-  //     // views: resolve('src/views'),
-  //     // packages: resolve('src/packages'),
-  //     // components: resolve('src/components'),
-  //     // assets: resolve('src/assets'),
-  //     // models: resolve('src/api'),
-  //     // utils: resolve('src/utils'),
-  //   },
-  // },
-  // TODO alias
-
-  // TODO proxyTable
 
   // tweak internal webpack configuration.
   // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
-  chainWebpack: () => {},
-  configureWebpack: config => {
-    /**{ symlinks: true,
-    alias:
-   { '@': '/Users/huixisheng/x-scaffold/x-scaffold-vue-admin/template/src',
-     'vue$': 'vue/dist/vue.runtime.esm.js' },
-  extensions: [ '.js', '.jsx', '.vue', '.json' ],
-  modules:
-   [ 'node_modules',
-     '/Users/huixisheng/x-scaffold/x-scaffold-vue-admin/template/node_modules',
-     '/Users/huixisheng/x-scaffold/x-scaffold-vue-admin/template/node_modules/@vue/cli-service/node_modules' ] }
-     */
-    // TODO development 模式不生成
-    config.plugins.push(
-      // https://npm.taobao.org/package/webpack-assets-manifest
-      // new WebpackAssetsManifest({
-      //   output: path.join(__dirname, 'dist/manifest.json'),
-      //   publicPath: 'https://p1.cosmeapp.com/',
-      //   done(manifest) {
-      //     // eslint-disable-next-line
-      //     const { requestAssets } = require('request-assets');
-      //     const manifestPath = path.join(__dirname, 'dist/manifest.json');
-      //     const cacheManifestAssets = manifestPath.replace(
-      //       '.json',
-      //       '-cache.json'
-      //     );
-      //     requestAssets(
-      //       {
-      //         webpack: JSON.stringify(manifest.assets),
-      //         path: path.basename(manifestPath, '.json'),
-      //         module: 'test'
-      //       },
-      //       cacheManifestAssets
-      //     )
-      //       .then(body => {
-      //         console.log(body);
-      //       })
-      //       .catch(error => {
-      //         console.log(error);
-      //       });
-      //   }
-      // })
-    );
-  }
+  chainWebpack: (config) => {
+    // config
+    //   .plugin('define')
+    //   .tap((args) => {
+    //     console.log(args);
+    //   });
+  },
+  configureWebpack: (config) => {
+    // https://github.com/vuejs/vue-cli/blob/dev/packages/%40vue/cli-service/lib/util/resolveClientEnv.js
+    // https://github.com/vuejs/vue-cli/blob/dev/packages/%40vue/cli-service/lib/config/base.js
+    // https://github.com/vuejs/vue-cli/issues/787
+
+    // const definePlugin = new webpack.DefinePlugin({
+    // });
+    if (config.mode === 'development') {
+      process.env.VUE_APP_XX_BASE = getEnvConfig('mzxdBase', 'http://xx.com');
+    }
+
+    config.externals = {
+      // 指定别名
+      // "moment": 'moment'
+      vue: 'Vue',
+      'element-ui': 'ELEMENT',
+      '@x-scaffold/adminui': 'AdminUi',
+    };
+
+    // delete config.resolve.alias['@'];
+    config.resolve.alias.src = resolve('src');
+    config.resolve.alias.packages = resolve('src/packages');
+    config.resolve.alias.components = resolve('src/components');
+    config.resolve.alias.utils = resolve('src/utils');
+    config.resolve.alias.api = resolve('src/api');
+
+    // https://github.com/asfktz/autodll-webpack-plugin/issues/58
+    config.plugins.push(new AutoDllPlugin({
+      inject: true, // will inject the DLL bundles to index.html
+      filename: '[name]_[hash:8].js',
+      debug: true,
+      path: './dll',
+      // inherit(config) {
+      //   // console.log(config);
+      // },
+      // config: {
+      //   output: {
+      //     filename: '[name]_v3.dll.js',
+      //     library: '[name]_v3',
+      //   },
+      // },
+      // hash: '[name]_v3',
+      entry: {
+        vendor: [
+          'vue-router',
+          'vuex',
+          'nprogress',
+          'js-cookie',
+          'vue-lazyload',
+          'pack-axios',
+        ],
+      },
+    }));
+
+    if (config.mode === 'production') {
+      config.devtool = false;
+      config.output.publicPath = publicPath;
+      config.plugins.push(qiniuWebpackPlugin);
+      config.plugins.push(webpackAssetsManifessInstance);
+    }
+  },
 };

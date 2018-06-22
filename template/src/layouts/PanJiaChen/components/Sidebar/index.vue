@@ -24,7 +24,7 @@ export default {
     ...mapGetters(['permission_routers', 'sidebar']),
     isCollapse() {
       return !this.sidebar.opened;
-    }
-  }
+    },
+  },
 };
 </script>

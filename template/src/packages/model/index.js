@@ -20,14 +20,13 @@ const service = new HttpService({
     // TODO 后台返回内容处理
     if (data.status === '1') {
       return data;
-    } else {
-      return Promise.reject(data);
     }
+    return Promise.reject(data);
   },
   error(error) {
     // TODO 返回统一
     return Promise.reject(error);
-  }
+  },
 });
 
 export default class Model {
@@ -56,7 +55,7 @@ export default class Model {
       list[key] = {
         method,
         methodParamsKey,
-        url
+        url,
       };
     });
   }
@@ -66,7 +65,7 @@ export default class Model {
     const modelNameItem = this.list[modelName];
     const serviceParams = {
       url: modelNameItem.url,
-      method: modelNameItem.method
+      method: modelNameItem.method,
     };
     serviceParams[modelNameItem.methodParamsKey] = params;
     console.log('serviceParams', serviceParams);

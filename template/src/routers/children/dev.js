@@ -1,6 +1,6 @@
-const DevAbout = () => import('@/views/dev/About');
-const DevHome = () => import('@/views/dev/Home');
-const DevList = () => import('@/views/dev/List');
+const DevAbout = () => import('src/views/dev/About');
+const DevHome = () => import('src/views/dev/Home');
+const DevList = () => import('src/views/dev/List');
 
 /* 使用x-do-cli的命令 x view 自动生成 */
 
@@ -30,7 +30,7 @@ routerList.push({
   path: 'list',
   component: DevList,
   meta: {
-    title: '列表',
+    title: '',
   },
   name: 'devList',
   hidden: false,

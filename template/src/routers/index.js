@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import Layout from 'src/layouts/PanJiaChen/Layout';
+import ErrorPage404 from 'src/views/errorPage/404';
+import ErrorPage401 from 'src/views/errorPage/401';
 import routerConfig from './config';
-import Layout from '@/layouts/PanJiaChen/Layout';
-import ErrorPage404 from '@/views/errorPage/404';
-import ErrorPage401 from '@/views/errorPage/401';
 
 // 以下子路由自己添加
 import childrenDev from './children/dev';
@@ -17,25 +17,29 @@ export const constantRouterMap = [
   {
     path: '/404',
     component: ErrorPage404,
+    name: 'errorPage404',
     hidden: true,
   },
   {
     path: '/401',
     component: ErrorPage401,
+    name: 'errorPage401',
     hidden: true,
   },
   {
-    path: '',
-    name: 'dev',
+    path: '/dev',
+    alias: '/',
+    redirect: '/dev/about',
     component: Layout,
     alwaysShow: true,
     hidden: false,
     meta: {
-      title: 'dashboard',
+      title: 'dev',
       icon: 'homepage',
       roles: ['editor', 'admin'],
       noCache: true,
     },
+    name: 'dev',
     children: routerConfig.setRouter(childrenDev),
   },
 ];
@@ -47,7 +51,7 @@ export const asyncRouterMap = [
 const router = new Router({
   mode: 'history',
   // TODO base
-  routes: constantRouterMap
+  routes: constantRouterMap,
 });
 
 export default router;

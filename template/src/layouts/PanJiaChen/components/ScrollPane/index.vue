@@ -13,7 +13,7 @@ export default {
   name: 'scrollPane',
   data() {
     return {
-      left: 0
+      left: 0,
     };
   },
   methods: {
@@ -33,7 +33,7 @@ export default {
           } else {
             this.left = Math.max(
               this.left + eventDelta,
-              $containerWidth - $wrapperWidth - padding
+              $containerWidth - $wrapperWidth - padding,
             );
           }
         } else {
@@ -60,8 +60,8 @@ export default {
         // tag in the right
         this.left = -($targetLeft - ($containerWidth - $targetWidth) + padding);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

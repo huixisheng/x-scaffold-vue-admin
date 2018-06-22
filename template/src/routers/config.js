@@ -23,18 +23,17 @@ const config = {
       roles: ['editor'],
       noCache: true,
     },
-  }
+  },
 };
 
 class RouterConfig {
-  constructor() {
-
-  }
+  // constructor() {
+  // }
 
   setRouter(routerList) {
     routerList.forEach((item, index) => {
       if (config[item.name]) {
-        routerConfig[index] = Object.assign(item, config[item.name]);
+        config[index] = Object.assign(item, config[item.name]);
       }
     });
     return routerList;

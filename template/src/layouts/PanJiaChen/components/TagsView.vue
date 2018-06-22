@@ -17,7 +17,7 @@
 
 <script>
 import ScrollPane from './ScrollPane';
-import { generateTitle } from '../i18n'
+import { generateTitle } from '../i18n';
 
 export default {
   components: { ScrollPane },
@@ -26,13 +26,13 @@ export default {
       visible: false,
       top: 0,
       left: 0,
-      selectedTag: {}
+      selectedTag: {},
     };
   },
   computed: {
     visitedViews() {
       return this.$store.state.tagsView.visitedViews;
-    }
+    },
   },
   watch: {
     $route() {
@@ -45,7 +45,7 @@ export default {
       } else {
         document.body.removeEventListener('click', this.closeMenu);
       }
-    }
+    },
   },
   mounted() {
     this.addViewTags();
@@ -64,8 +64,9 @@ export default {
     addViewTags() {
       const route = this.generateRoute();
       if (!route) {
-        return false;
+        return;
       }
+      // console.log('addViewTags', route);
       this.$store.dispatch('addVisitedViews', route);
     },
     moveToCurrentTag() {
@@ -80,7 +81,7 @@ export default {
       });
     },
     closeSelectedTag(view) {
-      this.$store.dispatch('delVisitedViews', view).then(views => {
+      this.$store.dispatch('delVisitedViews', view).then((views) => {
         if (this.isActive(view)) {
           const latestView = views.slice(-1)[0];
           if (latestView) {
@@ -109,8 +110,8 @@ export default {
     },
     closeMenu() {
       this.visible = false;
-    }
-  }
+    },
+  },
 };
 </script>
 

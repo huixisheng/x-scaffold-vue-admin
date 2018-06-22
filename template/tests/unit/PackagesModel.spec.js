@@ -6,7 +6,7 @@ describe('models/index.js', () => {
     // this.timeout(4000);
     modelInstance
       .run('docsList', {})
-      .then(data => {
+      .then((data) => {
         expect(data.data).to.be.an('array');
         expect(data).to.be.an('object');
         expect(data.data.status).to.equal('1');
