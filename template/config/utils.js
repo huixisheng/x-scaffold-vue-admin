@@ -7,7 +7,7 @@ const pkg = require('../package.json');
 
 function showErrorHint() {
   if (process.env.NODE_ENV === 'development') {
-    signale.error('如何自定义请配置.env\nopsBase=http://ykq.ops.cosmeapp.net\nmzxdBase=http://ykq.mzxd.cosmeapp.com');
+    signale.error('如何自定义请配置.env\nopsBase=http://ykq.example.net\nmzxdBase=http://ykq.example.com');
   }
 }
 
@@ -28,9 +28,9 @@ function getEnvConfig(envKey, defaultEnvValue) {
   return envValue;
 }
 
-const qiniuDomain = 'https://p1.cosmeapp.com/';
+const qiniuDomain = 'https://p1.cosmeapp.com';
 const qiniuBucket = 'deploy';
-const publicPath = qiniuDomain + pkg.name + '/';
+const publicPath = qiniuDomain + '/' + pkg.name + '/';
 
 
 exports.getEnvConfig = getEnvConfig;

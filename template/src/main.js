@@ -4,7 +4,7 @@ import 'normalize.css/normalize.css';
 import Element from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import AdminUI from '@x-scaffold/adminui';
-// import Packages from 'components/index';
+import Packages from 'components/index';
 import 'src/assets/app.css';
 // import 'src/icons/iconfont';
 
@@ -32,7 +32,7 @@ Vue.use(Element, {
   size: 'medium',
 });
 Vue.use(AdminUI);
-// Vue.use(Packages);
+Vue.use(Packages);
 // // register global utility filters.
 // Object.keys(filters).forEach(key => {
 //   Vue.filter(key, filters[key])
