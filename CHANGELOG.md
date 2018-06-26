@@ -3,6 +3,14 @@
 
 ## 修改记录 ##
 
+2018-06-22
+
+- 升级vue-cli3
+- 提取`panjiachen`的layout
+- 封装了通用`models`
+- 添加了多语言切换
+- 构建配置的提取
+
 2017-09-15
 
 - 根据`x-scaffold-vue-webpack`生成
