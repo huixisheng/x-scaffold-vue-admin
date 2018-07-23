@@ -17,6 +17,7 @@ function getEnvConfig(envKey, defaultEnvValue) {
     const result = require('dotenv').config().parsed;
     if (!result[envKey]) {
       showErrorHint();
+    } else {
       envValue = result[envKey];
     }
   } else {

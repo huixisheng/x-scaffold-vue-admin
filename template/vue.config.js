@@ -14,6 +14,12 @@ function resolve(dir) {
   return path.join(__dirname, dir);
 }
 
+// 支持webpack define
+// process.env.VUE_APP_MZXD_BASE = 'https://ykq.com';
+// if (process.env.NODE_ENV === 'development') {
+//   process.env.VUE_APP_MZXD_BASE = getEnvConfig('ykqBase', 'http://test.ykq.com');
+// }
+
 module.exports = {
   lintOnSave: true,
 
@@ -59,15 +65,16 @@ module.exports = {
     //   });
   },
   configureWebpack: (config) => {
+    // 在内部无效
     // https://github.com/vuejs/vue-cli/blob/dev/packages/%40vue/cli-service/lib/util/resolveClientEnv.js
     // https://github.com/vuejs/vue-cli/blob/dev/packages/%40vue/cli-service/lib/config/base.js
     // https://github.com/vuejs/vue-cli/issues/787
 
     // const definePlugin = new webpack.DefinePlugin({
     // });
-    if (config.mode === 'development') {
-      process.env.VUE_APP_XX_BASE = getEnvConfig('mzxdBase', 'http://xx.com');
-    }
+    // if (config.mode === 'development') {
+    //   process.env.VUE_APP_XX_BASE = getEnvConfig('mzxdBase', 'http://xx.com');
+    // }
 
     config.externals = {
       // 指定别名

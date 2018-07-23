@@ -2,6 +2,7 @@ const xConfig = require('x-config-deploy').getConfig();
 const QiniuWebpackPlugin = require('better-qiniu-webpack-plugin');
 const { pkg, publicPath, qiniuBucket, qiniuDomain } = require('./utils');
 
+// TODO 支持env配置
 const qiniuWebpackPlugin = new QiniuWebpackPlugin({
   accessKey: xConfig.qiniuConfig.accessKey, // required
   secretKey: xConfig.qiniuConfig.secretKey, // required
