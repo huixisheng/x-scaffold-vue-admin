@@ -1,13 +1,13 @@
-const xConfig = require('x-config-deploy').getConfig();
+const configDeploy = require('x-config-deploy');
 const QiniuWebpackPlugin = require('better-qiniu-webpack-plugin');
-const { pkg, publicPath, qiniuBucket, qiniuDomain } = require('./utils');
+const { pkg } = require('./utils');
 
 // TODO 支持env配置
 const qiniuWebpackPlugin = new QiniuWebpackPlugin({
-  accessKey: xConfig.qiniuConfig.accessKey, // required
-  secretKey: xConfig.qiniuConfig.secretKey, // required
-  bucket: qiniuBucket, // required
-  bucketDomain: qiniuDomain, // required
+  accessKey: configDeploy.get('qiniuDeploy.accessKey'), // required
+  secretKey: configDeploy.get('qiniuDeploy.secretKey'), // required
+  bucket: configDeploy.get('qiniuDeploy.bucket'), // required
+  bucketDomain: configDeploy.get('qiniuDeploy.domain'), // required
   matchFiles: ['*.css', '*.js'],
   uploadPath: pkg.name + '/',
   batch: 10,
@@ -15,8 +15,8 @@ const qiniuWebpackPlugin = new QiniuWebpackPlugin({
 
 // const QiniuPlugin = require('qiniu-webpack-plugin');
 // const qiniuPluginAssets = new QiniuPlugin({
-//   ACCESS_KEY: xConfig.qiniuConfig.accessKey,
-//   SECRET_KEY: xConfig.qiniuConfig.secretKey,
+//   ACCESS_KEY: xConfig.qiniuDeploy.accessKey,
+//   SECRET_KEY: xConfig.qiniuDeploy.secretKey,
 //   bucket: 'deploy',
 //   path: pkg.name,
 //   // include: [],

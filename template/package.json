@@ -35,12 +35,12 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.0-beta.15",
-    "@vue/cli-plugin-e2e-nightwatch": "^3.0.0-beta.15",
-    "@vue/cli-plugin-eslint": "^3.0.0-beta.15",
-    "@vue/cli-plugin-unit-mocha": "^3.0.0-beta.15",
-    "@vue/cli-service": "^3.0.0-beta.15",
-    "@vue/eslint-config-prettier": "^3.0.0-beta.15",
+    "@vue/cli-plugin-babel": "^3.0.0",
+    "@vue/cli-plugin-e2e-nightwatch": "^3.0.0",
+    "@vue/cli-plugin-eslint": "^3.0.0",
+    "@vue/cli-plugin-unit-mocha": "^3.0.0",
+    "@vue/cli-service": "^3.0.0",
+    "@vue/eslint-config-prettier": "^3.0.0",
     "@vue/test-utils": "^1.0.0-beta.15",
     "@x-scaffold/webpack-config": "0.0.4",
     "autodll-webpack-plugin": "^0.4.2",
@@ -63,7 +63,7 @@
     "signale": "^1.2.1",
     "vue-template-compiler": "^2.5.17",
     "webpack-assets-manifest": "^3.0.2",
-    "x-config-deploy": "0.0.3"
+    "x-config-deploy": "0.0.4"
   },
   "prettier": {
     "singleQuote": true

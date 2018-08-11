@@ -2,12 +2,13 @@ const fs = require('fs');
 const path = require('path');
 const signale = require('signale');
 const IP = require('ip').address();
+const configDeploy = require('x-config-deploy');
 const pkg = require('../package.json');
 
 
 function showErrorHint() {
   if (process.env.NODE_ENV === 'development') {
-    signale.error('如何自定义请配置.env\nopsBase=http://ykq.example.net\nmzxdBase=http://ykq.example.com');
+    signale.info('如需配置.env。例如下\nopsBase=http://ykq.example.net\nmzxdBase=http://ykq.example.com');
   }
 }
 
@@ -29,15 +30,14 @@ function getEnvConfig(envKey, defaultEnvValue) {
   return envValue;
 }
 
-const qiniuDomain = 'https://p1.cosmeapp.com';
-const qiniuBucket = 'deploy';
+const qiniuDomain = configDeploy.get('qiniuDeploy.domain');
 const publicPath = qiniuDomain + '/' + pkg.name + '/';
-export const requestAssetsModule = 'OpsV2';
+// 跟laravel业务相关, Modules下的模块名
+const requestAssetsModule = 'OpsV2';
 
 
+exports.requestAssetsModule = requestAssetsModule;
 exports.getEnvConfig = getEnvConfig;
 exports.IP = IP;
 exports.pkg = pkg;
 exports.publicPath = publicPath;
-exports.qiniuDomain = qiniuDomain;
-exports.qiniuBucket = qiniuBucket;

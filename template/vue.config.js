@@ -20,6 +20,8 @@ function resolve(dir) {
 
 module.exports = {
   lintOnSave: true,
+  // https://cli.vuejs.org/zh/guide/webpack.html#%E7%AE%80%E5%8D%95%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F
+  baseUrl: process.env.NODE_ENV === 'production' ? 'publicPath' : '/',
 
   // configure webpack-dev-server behavior
   devServer,
@@ -90,7 +92,9 @@ module.exports = {
 
     if (config.mode === 'production') {
       config.devtool = false;
-      config.output.publicPath = publicPath;
+      // Configuration Error: Avoid modifying webpack output.publicPath directly. Use the "baseUrl" option instead.
+      // config.output.publicPath = publicPath;
+      // https://github.com/vuejs/vue-cli/issues/1608
       config.plugins.push(qiniuWebpackPlugin);
       config.plugins.push(webpackAssetsManifessInstance);
     }
