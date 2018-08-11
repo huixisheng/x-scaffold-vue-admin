@@ -10,6 +10,7 @@ const tagsView = {
         name: view.name,
         path: view.path,
         title: view.meta.title || 'no-name',
+        query: view.query,
       });
       if (!view.meta.noCache) {
         state.cachedViews.push(view.name);

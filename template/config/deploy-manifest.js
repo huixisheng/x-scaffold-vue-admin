@@ -1,10 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
-const { publicPath, pkg } = require('./utils');
+const { publicPath, pkg, requestAssetsModule } = require('./utils');
 
 const manifestOutpath = path.join(__dirname, `../dist/webpack-${pkg.name}.json`);
-const requestAssetsModule = 'OpsV2';
 
 const webpackAssetsManifessInstance = new WebpackAssetsManifest({
   output: manifestOutpath,

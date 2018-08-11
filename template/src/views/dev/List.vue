@@ -9,8 +9,6 @@
   </div>
 </template>
 <script>
-import modelInstance from '@/models/index';
-
 export default {
   name: 'list',
   data() {
@@ -21,8 +19,7 @@ export default {
   components: {},
   mounted() {
     const self = this;
-    modelInstance
-      .run('docsList', {})
+    this.$http.run('docsList', {})
       .then((data) => {
         this.list = data.data;
         console.log(data);

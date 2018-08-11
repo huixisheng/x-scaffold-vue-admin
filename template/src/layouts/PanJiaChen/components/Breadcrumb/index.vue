@@ -1,9 +1,9 @@
 <template>
-  <el-breadcrumb class="app-breadcrumb" separator="/">
+  <el-breadcrumb class="app-breadcrumb" separator="/" v-if="levelList">
     <transition-group name="breadcrumb">
-      <el-breadcrumb-item v-for="(item,index)  in levelList" :key="item.path" v-if='item.meta.title'>
-        <span v-if='item.redirect==="noredirect"||index==levelList.length-1' class="no-redirect" v-text="generateTitle(item.meta.title)"></span>
-        <router-link v-else :to="item.redirect||item.path" v-text="generateTitle(item.meta.title)"></router-link>
+      <el-breadcrumb-item v-for="(item, index)  in levelList" :key="item.name" v-if='item.meta.title'>
+        <span v-if='item.redirect === "noredirect" || index == levelList.length - 1' class="no-redirect" v-text="generateTitle(item.meta.title)"></span>
+        <router-link v-else :to="{name: item.name}" v-text="generateTitle(item.meta.title)"></router-link>
       </el-breadcrumb-item>
     </transition-group>
   </el-breadcrumb>
@@ -29,11 +29,20 @@ export default {
   methods: {
     generateTitle,
     getBreadcrumb() {
-      let matched = this.$route.matched.filter((item) => item.name);
+      let matched = this.$route.matched.filter((item) => {
+        if (item.path.indexOf('/error') === 0) {
+          return false;
+        }
+        return item.name || false;
+      });
       const first = matched[0];
       if (first && first.name !== 'dashboard') {
-        matched = [{ path: '/dashboard', meta: { title: 'dashboard' } }].concat(matched);
+        matched = [{
+          name: 'dashboard',
+          meta: { title: 'dashboard' },
+        }].concat(matched);
       }
+      console.log('levelList', matched);
       this.levelList = matched;
     },
   },

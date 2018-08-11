@@ -32,6 +32,7 @@ function getEnvConfig(envKey, defaultEnvValue) {
 const qiniuDomain = 'https://p1.cosmeapp.com';
 const qiniuBucket = 'deploy';
 const publicPath = qiniuDomain + '/' + pkg.name + '/';
+export const requestAssetsModule = 'OpsV2';
 
 
 exports.getEnvConfig = getEnvConfig;

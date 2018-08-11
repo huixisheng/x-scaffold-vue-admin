@@ -68,8 +68,17 @@ export default class Model {
       method: modelNameItem.method,
     };
     serviceParams[modelNameItem.methodParamsKey] = params;
-    console.log('serviceParams', serviceParams);
-    return httpService(serviceParams);
+    return new Promise((resolve, reject) => {
+      httpService(serviceParams).then((data) => {
+        resolve(data);
+      }).catch((error) => {
+        if (!(error && error.message === 'cancelToken')) {
+          console.error('error');
+          console.dir(error);
+          reject(error);
+        }
+      });
+    });
   }
 
   addModel() {

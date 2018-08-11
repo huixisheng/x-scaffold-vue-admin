@@ -1,11 +1,11 @@
 const { getEnvConfig, IP } = require('./utils');
 
-// const target = getEnvConfig('baseUrl', 'http://xx.com');
+const target = getEnvConfig('baseUrl', 'https://easy-mock.com/mock/59ba562fe0dc663341aa54c3/v1');
 
 const proxyTable = {
   '/docs-list': {
     xfwd: false,
-    target: 'https://easy-mock.com/mock/59ba562fe0dc663341aa54c3/v1',
+    target,
     changeOrigin: true,
     secure: true,
     cookieDomainRewrite: {

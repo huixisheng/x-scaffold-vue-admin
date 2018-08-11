@@ -1,6 +1,7 @@
 // 根据路由的name进行相关的扩展配置
 const config = {
   devAbout: {
+    name: 'devAbout',
     meta: {
       title: 'about',
       icon: 'homepage',
@@ -10,7 +11,7 @@ const config = {
   },
   devHome: {
     meta: {
-      title: 'index',
+      title: 'hello',
       icon: 'homepage',
       roles: ['editor'],
       noCache: true,

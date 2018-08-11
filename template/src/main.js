@@ -6,6 +6,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import AdminUI from '@x-scaffold/adminui';
 import Packages from 'components/index';
 import 'src/assets/app.css';
+import apiInstance from 'src/models/index';
 // import 'src/icons/iconfont';
 
 import App from './App';
@@ -15,6 +16,7 @@ import store from './store/index';
 import i18n from './lang';
 import './permission'; // permission control
 
+Vue.prototype.$http = apiInstance;
 // import * as filters from './filters' // global filters
 
 Vue.use(VueLazyload, {

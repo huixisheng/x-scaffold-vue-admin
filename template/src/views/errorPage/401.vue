@@ -10,10 +10,10 @@
         <ul class="list-unstyled">
           <li>或者你可以去:</li>
           <li class="link-type">
-            <router-link to="/index">回首页</router-link>
+            <router-link :to="{name: 'dashboard'}" replace>回首页</router-link>
           </li>
-          <li class="link-type"><a href="https://www.taobao.com/">随便看看</a></li>
-          <li><a @click.prevent="dialogVisible=true" href="#">点我看图</a></li>
+          <!-- <li class="link-type"><a href="https://www.taobao.com/">随便看看</a></li> -->
+          <!-- <li><a @click.prevent="dialogVisible=true" href="#">点我看图</a></li> -->
         </ul>
       </el-col>
       <el-col :span="12">
@@ -42,7 +42,7 @@ export default {
   methods: {
     back() {
       if (this.$route.query.noGoBack) {
-        this.$router.push({ path: '/index' });
+        this.$router.replace({ name: 'dashboard' });
       } else {
         this.$router.go(-1);
       }

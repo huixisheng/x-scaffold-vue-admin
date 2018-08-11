@@ -2,7 +2,7 @@
   <div class="tags-view-container">
     <scroll-pane class='tags-view-wrapper' ref='scrollPane'>
       <router-link ref='tag' class="tags-view-item" :class="isActive(tag) ? 'active': ''" v-for="tag in Array.from(visitedViews)"
-        :to="tag.path" :key="tag.path" @contextmenu.prevent.native="openMenu(tag,$event)">
+        :to="tag" :key="tag.path" @contextmenu.prevent.native="openMenu(tag,$event)">
         <span v-text="generateTitle(tag.title)"></span>
         <span class='el-icon-close' @click.prevent.stop='closeSelectedTag(tag)'></span>
       </router-link>
@@ -66,7 +66,9 @@ export default {
       if (!route) {
         return;
       }
-      // console.log('addViewTags', route);
+      if (route.name === 'errorPage401' || route.name === 'errorPage404') {
+        return;
+      }
       this.$store.dispatch('addVisitedViews', route);
     },
     moveToCurrentTag() {
@@ -87,7 +89,9 @@ export default {
           if (latestView) {
             this.$router.push(latestView.path);
           } else {
-            this.$router.push('/');
+            this.$router.push({
+              name: 'dashboard',
+            });
           }
         }
       });
@@ -100,7 +104,9 @@ export default {
     },
     closeAllTags() {
       this.$store.dispatch('delAllViews');
-      this.$router.push('/');
+      this.$router.push({
+        name: 'dashboard',
+      });
     },
     openMenu(tag, e) {
       this.visible = true;

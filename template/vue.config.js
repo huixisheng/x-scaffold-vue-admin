@@ -1,11 +1,9 @@
 const path = require('path');
 const fs = require('fs');
-const portFinderSync = require('portfinder-sync');
 const AutoDllPlugin = require('autodll-webpack-plugin');
 
-const PORT = portFinderSync.getPort(8080);
-const { IP } = require('./config/utils');
-const proxyTable = require('./config/proxy-table');
+
+const devServer = require('./config/webpack-dev-server');
 const qiniuWebpackPlugin = require('./config/qiniu-plugin');
 const { getEnvConfig, publicPath } = require('./config/utils');
 const webpackAssetsManifessInstance = require('./config/deploy-manifest');
@@ -24,36 +22,7 @@ module.exports = {
   lintOnSave: true,
 
   // configure webpack-dev-server behavior
-  devServer: {
-    // contentBase: path.join(__dirname, 'public'),
-    watchOptions: {
-      poll: true,
-    },
-    progress: true,
-    open: true,
-    openPage: './',
-    // TDOO fix socket实时预览的问题
-    // host: IP,
-    // bonjour: true,
-    stats: 'errors-only',
-    port: PORT,
-    https: false,
-    hotOnly: false,
-    overlay: {
-      warnings: true,
-      errors: true,
-    },
-    // https://webpack.docschina.org/configuration/dev-server/#devserver-uselocalip
-    useLocalIp: true,
-    historyApiFallback: true,
-    noInfo: true,
-    // See https://github.com/vuejs/vue-cli/blob/dev/docs/cli-service.md#configuring-proxy
-    proxy: proxyTable, // string | Object
-    before: (app) => {
-      // console.log(app.request);
-      // console.log(app.response);
-    },
-  },
+  devServer,
 
   // tweak internal webpack configuration.
   // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
