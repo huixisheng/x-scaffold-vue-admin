@@ -4,6 +4,13 @@
 
 
 ## 安装 ##
+### vue/cli  ###
+
+``` shell
+$ sudo npm install -g @vue/cli
+$ sudo npm install -g @vue/cli-service
+$ sudo sudo npm install -g @vue/cli-init
+```
 
 ### 项目初始化 ###
 

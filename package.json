@@ -5,8 +5,8 @@
   "description": "根据`vue init webpack`生成的模块修改，支持多页面配置",
   "scripts": {},
   "devDependencies": {
-    "@vue/cli": "^3.0.0-rc.3",
-    "@vue/cli-init": "^3.0.0-rc.3",
-    "@vue/cli-service": "^3.0.0-rc.3"
+    "@vue/cli": "^3.0.0",
+    "@vue/cli-init": "^3.0.0",
+    "@vue/cli-service": "^3.0.0"
   }
 }
