@@ -1,6 +1,6 @@
 # x-scaffold-vue-admin
 
-> 根据`vue init webpack`生成的模块修改，支持多页面配置
+> 根据`vue init webpack`生成的模块修改用于后台项目构建
 
 
 ## 安装 ##
@@ -32,49 +32,23 @@ $ npm install
 $ npm run dev
 ```
 
-### 项目构建 ###
+## 配置 ##
+### 配置资源文件上传七牛 ###
+> [配置参考](https://github.com/huixisheng/x-config-deploy)，可以是.env或者.xconfig.js
 
-统一项目路径
-
-``` bash
-$ ln -s ~/Mzxd/** ~/ProjectRoot/
+```
+module.exports = {
+  "qiniuDeploy": {
+    "accessKey": "",
+    "secretKey": "",
+    "bucket": "",
+    "domain": "",
+  },
+  // 跟laravel业务相关, Modules下的模块名
+  laravelModuleName=OpsV2
+}
 ```
 
-``` bash
-$ npm run build
-```
-
-### 项目构建支持生成图表依赖分析 ###
-
-```bash
-$ npm run build --report
-```
-
-### run unit tests ###
-
-```bash
-$ npm run unit
-```
-
-### run e2e tests ###
-
-```bash
-$ npm run e2e
-```
-
-### run all tests
-```bash
-$ npm test
-```
-
-
-## 问题记录 ##
-
-/Users/huixisheng/x/x-scaffold-vue-webpack/template/node_modules/_webpack@3.6.0@webpack/lib/HotModuleReplacementPlugin.js:59
-                    records.chunkModuleIds[chunk.id] = chunk.mapModules(m => m.id);
-                                                             ^
-
-TypeError: chunk.mapModules is not a function
-
-使用npm5 安装会报错
-- https://github.com/JeffreyWay/laravel-mix/issues/985
+## 参考以下项目
+- https://github.com/vuejs-templates/webpack
+- https://github.com/PanJiaChen/vue-element-admin
