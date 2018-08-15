@@ -1,16 +1,15 @@
-const DashbordIndex = () => import('src/views/dashboard/Index');
-
-/* 使用x-do-cli的命令 x view 自动生成 */
+/* 使用x-do-view自动生成，修改会被覆盖 */
+const DashboardIndex = () => import('src/pages/dashboard/Index');
 
 const routerList = [];
 
 routerList.push({
   path: 'index',
-  component: DashbordIndex,
+  component: DashboardIndex,
   meta: {
     title: '页面标题',
   },
-  name: 'dashbordIndex',
+  name: 'dashboardIndex',
   hidden: false,
 });
 

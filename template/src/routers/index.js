@@ -1,14 +1,17 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Layout from 'src/layouts/PanJiaChen/Layout';
-// import ErrorPage404 from 'src/views/errorPage/404';
-// import ErrorPage401 from 'src/views/errorPage/401';
+// import ErrorPage404 from 'src/pages/errorPage/404';
+// import ErrorPage401 from 'src/pages/errorPage/401';
 import routerConfig from './config';
 
 // 以下子路由自己添加
-import childrenDev from './children/dev';
+import childrenSnippet from './children/snippet';
 import childrenErrorPage from './children/error-page';
 import childrenDashbord from './children/dashboard';
+
+// 以下子路由自己添加
+// import childrenDashboard from './children/dashboard';
 
 Vue.use(Router);
 
@@ -46,13 +49,13 @@ export const constantRouterMap = [
     alwaysShow: true,
     hidden: false,
     meta: {
-      title: 'dev',
+      title: 'snippet',
       icon: 'homepage',
       roles: ['editor', 'admin'],
       noCache: true,
     },
     name: 'dev',
-    children: routerConfig.setRouter(childrenDev),
+    children: routerConfig.setRouter(childrenSnippet),
   },
 ];
 

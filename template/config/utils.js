@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 const signale = require('signale');
-const IP = require('ip').address();
 const configDeploy = require('x-config-deploy');
 const pkg = require('../package.json');
 
@@ -32,12 +31,7 @@ function getEnvConfig(envKey, defaultEnvValue) {
 
 const qiniuDomain = configDeploy.get('qiniuDeploy.domain');
 const publicPath = qiniuDomain + '/' + pkg.name + '/';
-// 跟laravel业务相关, Modules下的模块名
-const requestAssetsModule = 'OpsV2';
 
-
-exports.requestAssetsModule = requestAssetsModule;
 exports.getEnvConfig = getEnvConfig;
-exports.IP = IP;
 exports.pkg = pkg;
 exports.publicPath = publicPath;

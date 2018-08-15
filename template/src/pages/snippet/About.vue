@@ -8,6 +8,7 @@ import modelInstance from '@/models/index';
 
 export default {
   name: 'about',
+  title: '关于',
   components: {},
   mounted() {
     modelInstance

@@ -1,7 +1,6 @@
-const ErrorPage401 = () => import('src/views/errorPage/401');
-const ErrorPage404 = () => import('src/views/errorPage/404');
-
-/* 使用x-do-cli的命令 x view 自动生成 */
+/* 使用x-do-view自动生成，修改会被覆盖 */
+const ErrorPage401 = () => import('src/pages/errorPage/401');
+const ErrorPage404 = () => import('src/pages/errorPage/404');
 
 const routerList = [];
 

@@ -10,6 +10,7 @@
 </template>
 <script>
 export default {
+  title: '列表',
   name: 'list',
   data() {
     return {
