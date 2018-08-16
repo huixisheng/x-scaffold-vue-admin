@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const AutoDllPlugin = require('autodll-webpack-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 const devServer = require('./config/webpack-dev-server');
 const entryMultupage = require('./config/entry-multipage');
@@ -92,6 +93,14 @@ module.exports = {
         ],
       },
     }));
+
+    if (config.mode === 'development') {
+      config.plugins.push(new StyleLintPlugin({
+        failOnError: false,
+        files: ['**/*.s?(a|c)ss', 'src/**/**/*.vue', 'src/***/*.css'],
+        // files: '../static/.css'
+      }));
+    }
 
     if (config.mode === 'production') {
       config.devtool = false;

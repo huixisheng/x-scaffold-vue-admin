@@ -2,16 +2,20 @@
   "name": "name",
   "version": "0.0.1",
   "private": true,
+  "description": "美星家运营后台",
   "scripts": {
     "eslint": "node_modules/eslint/bin/eslint.js --color  src/",
     "serve": "./node_modules/.bin/vue-cli-service serve --open --copy",
     "dev": "npm run serve",
     "build": "./node_modules/.bin/vue-cli-service build",
     "build:online": "cross-env PROJECT_ENV=production ./node_modules/.bin/vue-cli-service build",
-    "lint": "./node_modules/.bin/vue-cli-service lint",
+    "lint": "npm run eslint && npm run stylelint && npm run htmlhint",
     "lint:fix": "./node_modules/.bin/vue-cli-service lint --fix",
     "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "vue-cli-service test:e2e"
+    "test:e2e": "vue-cli-service test:e2e",
+    "stylelint": "node_modules/stylelint/bin/stylelint.js src/**/*.css",
+    "stylefmt": "node_modules/stylefmt/bin/cli.js src/**/*.css  -c stylelint.config.js",
+    "htmlhint": "node_modules/htmlhint/bin/htmlhint src/**/*.html"
   },
   "dependencies": {
     "@x-scaffold/adminui": "0.0.8",
@@ -25,7 +29,6 @@
     "normalize.css": "^8.0.0",
     "nprogress": "^0.2.0",
     "pack-axios": "0.0.6",
-    "pkg-dir": "^3.0.0",
     "qrcode.vue": "^1.5.1",
     "thread-parse": "0.0.7",
     "vue": "^2.5.17",
@@ -36,6 +39,7 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "@mapbox/stylelint-processor-arbitrary-tags": "^0.2.0",
     "@vue/cli-plugin-babel": "^3.0.0",
     "@vue/cli-plugin-e2e-nightwatch": "^3.0.0",
     "@vue/cli-plugin-eslint": "^3.0.0",
@@ -55,20 +59,29 @@
     "eslint-config-style-guide": "0.0.7",
     "eslint-import-resolver-webpack": "^0.10.1",
     "eslint-plugin-import": "^2.13.0",
+    "htmlhint": "^0.9.13",
     "ip": "^1.1.5",
     "less": "^3.8.1",
     "less-loader": "^4.0.5",
     "node-sass": "^4.9.3",
+    "pkg-dir": "^3.0.0",
     "portfinder-sync": "0.0.2",
     "qiniu-webpack-plugin": "^0.4.2",
     "sass-loader": "^7.1.0",
     "signale": "^1.2.1",
+    "stylelint": "^9.2.0",
+    "stylelint-config-style-guide": "^0.0.3",
+    "stylelint-webpack-plugin": "^0.10.5",
     "vue-template-compiler": "^2.5.17",
     "webpack-assets-manifest": "^3.0.2",
     "x-config-deploy": "0.0.4"
   },
   "prettier": {
     "singleQuote": true
+  },
+  "engines": {
+    "node": ">= 4.0.0",
+    "npm": ">= 3.0.0"
   },
   "browserslist": [
     "> 1%",
