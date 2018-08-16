@@ -41,6 +41,5 @@ pages['app'] = {
   filename: 'index.html',
   chunks: ['chunk-vendors', 'chunk-common', 'app'],
 };
-console.log(pages);
 
 module.exports = pages;

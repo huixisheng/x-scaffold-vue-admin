@@ -7,6 +7,7 @@ import AdminUI from '@x-scaffold/adminui';
 import Packages from 'components/index';
 import 'src/assets/app.css';
 import apiInstance from 'src/models/index';
+// 或者cdn引入
 // import 'src/icons/iconfont';
 
 import App from './App';
@@ -35,6 +36,7 @@ Vue.use(Element, {
 });
 Vue.use(AdminUI);
 Vue.use(Packages);
+
 // // register global utility filters.
 // Object.keys(filters).forEach(key => {
 //   Vue.filter(key, filters[key])

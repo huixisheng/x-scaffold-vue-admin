@@ -6,12 +6,16 @@ import { getToken } from 'src/utils/auth'; // getToken from cookie
 import store from './store';
 
 function redirectLogin() {
-  console.log('redirectLogin');
+  // TODO 根据自己的登录系统自行处理
+  router.push({
+    name: 'login',
+  });
 }
 
 
-NProgress.configure({ showSpinner: false }); // NProgress Configuration
+NProgress.configure({ showSpinner: false });
 
+// TODO
 // permissiom judge function
 function hasPermission(roles, permissionRoles) {
   if (roles.indexOf('superadmin') >= 0) return true; // admin permission passed directly
@@ -22,19 +26,16 @@ function hasPermission(roles, permissionRoles) {
 const whiteList = ['login']; // no redirect whitelist
 
 router.beforeEach((to, from, next) => {
-  // console.log('getToken', getToken());
   NProgress.start(); // start progress bar
   if (getToken()) {
     // determine if there has token
     /* has token */
     if (to.name === 'login') {
-      // TODO
+      // TODO 当前是登录页，已经登录的直接跳转到首页
       next({ path: '/' });
       NProgress.done(); // if current page is dashboard will not trigger afterEach hook, so manually handle it
     } else {
-      console.log('store.getters.roles', store.getters.roles);
       if (store.getters.roles.length === 0) {
-        // 判断当前用户是否已拉取完user_info信息
         store
           .dispatch('GetUserInfo')
           .then((data) => {
@@ -43,21 +44,16 @@ router.beforeEach((to, from, next) => {
             store.dispatch('GenerateRoutes', { roles }).then(() => {
               // 根据roles权限生成可访问的路由表
               router.addRoutes(store.getters.addRouters); // 动态添加可访问路由表
-              console.log(to);
               next({ ...to, replace: true }); // hack方法 确保addRoutes已完成 ,set the replace: true so the navigation will not leave a history record
             });
           })
           .catch((err) => {
             store.dispatch('FedLogOut').then(() => {
-              Message.error(err || 'Verification failed, please login again');
               redirectLogin();
-              // next({ path: '/' });
             });
           });
       } else {
         // 没有动态改变权限的需求可直接next() 删除下方权限判断 ↓
-        // console.log('to.meta.roles', to);
-        // console.log(store);
         if (!to.matched.length) {
           next({
             name: 'errorPage404',
@@ -78,7 +74,7 @@ router.beforeEach((to, from, next) => {
     }
   } else {
     /* has no token */
-    if (whiteList.indexOf(to.path) !== -1) {
+    if (whiteList.indexOf(to.name) !== -1) {
       // 在免登录白名单，直接进入
       next();
     } else {

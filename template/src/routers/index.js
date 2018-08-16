@@ -5,17 +5,15 @@ import Layout from 'src/layouts/PanJiaChen/Layout';
 // import ErrorPage401 from 'src/pages/errorPage/401';
 import routerConfig from './config';
 
-// 以下子路由自己添加
 import childrenSnippet from './children/snippet';
 import childrenErrorPage from './children/error-page';
-import childrenDashbord from './children/dashboard';
+import childrenDashboard from './children/dashboard';
+import childrenAuth from './children/auth';
+
 
 // 以下子路由自己添加
-// import childrenDashboard from './children/dashboard';
 
 Vue.use(Router);
-
-/* Layout */
 
 export const constantRouterMap = [
   {
@@ -38,7 +36,7 @@ export const constantRouterMap = [
     redirect: '/dashboard/index',
     hidden: true,
     name: 'dashboard',
-    children: routerConfig.setRouter(childrenDashbord),
+    children: routerConfig.setRouter(childrenDashboard),
     meta: {
       title: 'dashboard',
     },
@@ -56,6 +54,12 @@ export const constantRouterMap = [
     },
     name: 'dev',
     children: routerConfig.setRouter(childrenSnippet),
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: childrenAuth[0]['component'],
+    hidden: true,
   },
 ];
 

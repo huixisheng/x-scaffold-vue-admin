@@ -7,7 +7,7 @@ const pkg = require('../package.json');
 
 function showErrorHint() {
   if (process.env.NODE_ENV === 'development') {
-    signale.info('如需配置.env。例如下\nopsBase=http://ykq.example.net\nmzxdBase=http://ykq.example.com');
+    signale.info('根据需求配置.env。例opsBase=http://ykq.example.net');
   }
 }
 

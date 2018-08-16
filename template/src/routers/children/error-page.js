@@ -10,7 +10,7 @@ routerList.push({
   meta: {
     title: '',
   },
-  name: 'errorPage401',
+  name: 'page401',
   hidden: false,
 });
 
@@ -20,7 +20,7 @@ routerList.push({
   meta: {
     title: '',
   },
-  name: 'errorPage404',
+  name: 'page404',
   hidden: false,
 });
 

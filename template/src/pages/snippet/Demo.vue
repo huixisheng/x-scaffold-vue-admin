@@ -10,8 +10,8 @@
 import HelloWorld from '@/components/dev/HelloWorld.vue';
 
 export default {
-  title: '首页',
-  name: 'home',
+  title: 'Demo',
+  name: 'snippetDemo',
   components: {
     HelloWorld,
   },

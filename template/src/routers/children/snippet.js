@@ -1,48 +1,37 @@
 /* 使用x-do-view自动生成，修改会被覆盖 */
-const SnippetAbout = () => import('src/pages/snippet/About');
-const SnippetFormdemo = () => import('src/pages/snippet/FormDemo');
-const SnippetHome = () => import('src/pages/snippet/Home');
-const SnippetList = () => import('src/pages/snippet/List');
+const SnippetDemo = () => import('src/pages/snippet/Demo');
+const SnippetDemoform = () => import('src/pages/snippet/DemoForm');
+const SnippetDemohttp = () => import('src/pages/snippet/DemoHttp');
 
 const routerList = [];
 
 routerList.push({
-  path: 'about',
-  component: SnippetAbout,
+  path: 'demo',
+  component: SnippetDemo,
   meta: {
-    title: '关于',
+    title: 'Demo',
   },
-  name: 'snippetAbout',
+  name: 'snippetDemo',
   hidden: false,
 });
 
 routerList.push({
-  path: 'form-demo',
-  component: SnippetFormdemo,
+  path: 'demo-form',
+  component: SnippetDemoform,
   meta: {
     title: '表单例子',
   },
-  name: 'snippetFormDemo',
+  name: 'snippetDemoForm',
   hidden: false,
 });
 
 routerList.push({
-  path: 'home',
-  component: SnippetHome,
+  path: 'demo-http',
+  component: SnippetDemohttp,
   meta: {
-    title: '首页',
+    title: '数据请求例子',
   },
-  name: 'snippetHome',
-  hidden: false,
-});
-
-routerList.push({
-  path: 'list',
-  component: SnippetList,
-  meta: {
-    title: '列表',
-  },
-  name: 'snippetList',
+  name: 'snippetDemoHttp',
   hidden: false,
 });
 

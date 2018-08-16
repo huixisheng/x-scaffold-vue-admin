@@ -19,6 +19,7 @@ function resolve(dir) {
 // }
 
 module.exports = {
+  // 后台不需要
   pages: entryMultupage,
 
   lintOnSave: true,
@@ -87,7 +88,7 @@ module.exports = {
           'nprogress',
           'js-cookie',
           'vue-lazyload',
-          'pack-axios',
+          // 'pack-axios',
         ],
       },
     }));

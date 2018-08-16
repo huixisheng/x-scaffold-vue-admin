@@ -42,7 +42,6 @@ export default {
           meta: { title: 'dashboard' },
         }].concat(matched);
       }
-      console.log('levelList', matched);
       this.levelList = matched;
     },
   },
