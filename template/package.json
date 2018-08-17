@@ -1,22 +1,30 @@
 {
   "name": "name",
   "version": "0.0.1",
-  "private": true,
   "description": "美星家运营后台",
+  "private": true,
   "scripts": {
     "eslint": "node_modules/eslint/bin/eslint.js --color  src/",
+    "eslint:diff": "node_modules/eslint/bin/eslint.js $(git diff-index HEAD --name-only --diff-filter ACMR |grep '\\.\\(jsx\\|es6\\|js\\|vue\\)$')",
     "serve": "./node_modules/.bin/vue-cli-service serve --open --copy",
     "dev": "npm run serve",
     "build": "./node_modules/.bin/vue-cli-service build",
     "build:online": "cross-env PROJECT_ENV=production ./node_modules/.bin/vue-cli-service build",
-    "lint": "npm run eslint && npm run stylelint && npm run htmlhint",
+    "lint": "./node_modules/.bin/vue-cli-service lint",
     "lint:fix": "./node_modules/.bin/vue-cli-service lint --fix",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "stylelint": "node_modules/stylelint/bin/stylelint.js src/**/*.css",
     "stylefmt": "node_modules/stylefmt/bin/cli.js src/**/*.css  -c stylelint.config.js",
-    "htmlhint": "node_modules/htmlhint/bin/htmlhint src/**/*.html"
+    "htmlhint": "node_modules/htmlhint/bin/htmlhint src/**/*.html",
+    "preinstall": "git config --local commit.template ./.gitmessage"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "author": "{{author}}",
   "dependencies": {
     "@x-scaffold/adminui": "0.0.8",
     "axios": "^0.18.0",
@@ -39,13 +47,15 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^7.0.0",
+    "@commitlint/config-angular": "^7.0.1",
     "@mapbox/stylelint-processor-arbitrary-tags": "^0.2.0",
-    "@vue/cli-plugin-babel": "^3.0.0",
-    "@vue/cli-plugin-e2e-nightwatch": "^3.0.0",
-    "@vue/cli-plugin-eslint": "^3.0.0",
-    "@vue/cli-plugin-unit-mocha": "^3.0.0",
-    "@vue/cli-service": "^3.0.0",
-    "@vue/eslint-config-prettier": "^3.0.0",
+    "@vue/cli-plugin-babel": "^3.0.1",
+    "@vue/cli-plugin-e2e-nightwatch": "^3.0.1",
+    "@vue/cli-plugin-eslint": "^3.0.1",
+    "@vue/cli-plugin-unit-mocha": "^3.0.1",
+    "@vue/cli-service": "^3.0.1",
+    "@vue/eslint-config-prettier": "^3.0.1",
     "@vue/test-utils": "^1.0.0-beta.15",
     "@x-scaffold/webpack-config": "0.0.4",
     "@x-scaffold/webpack-entry": "0.0.2",
@@ -58,8 +68,9 @@
     "dotenv": "^6.0.0",
     "eslint-config-style-guide": "0.0.7",
     "eslint-import-resolver-webpack": "^0.10.1",
-    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-import": "^2.14.0",
     "htmlhint": "^0.9.13",
+    "husky": "^1.0.0-rc.8",
     "ip": "^1.1.5",
     "less": "^3.8.1",
     "less-loader": "^4.0.5",
