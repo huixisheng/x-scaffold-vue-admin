@@ -19,7 +19,7 @@
         <el-col :span="8">
           <el-form-item style="text-align: center;">
             <el-button type="text" @click="getSmsCode"  :disabled="disabledCodeText">
-              <span v-if="disabledCodeText">{{ codeTime + ' 秒后重试' }}</span>
+              <span v-if="disabledCodeText" v-text="codeTime + ' 秒后重试'"></span>
               <span v-if="!disabledCodeText">获取验证码</span>
             </el-button>
           </el-form-item>
