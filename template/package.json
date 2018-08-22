@@ -1,5 +1,5 @@
 {
-  "name": "name",
+  "name": "{{name}}",
   "version": "0.0.1",
   "description": "美星家运营后台",
   "private": true,

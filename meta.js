@@ -17,7 +17,7 @@ module.exports = {
       "type": "string",
       "required": false,
       "message": "Project description",
-      "default": "A Vue.js project"
+      "default": "Vue admin project"
     },
     "author": {
       "type": "string",
@@ -27,5 +27,5 @@ module.exports = {
   "filters": {
     "node_modules/**/*": false
   },
-  "completeMessage": "To get started:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}npm install\n  npm run dev\nnpm run dev:docs\n\nDocumentation can be found at https://github.com/huixisheng/x-scaffold-vue-webpack"
+  "completeMessage": "To get started:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}npm install\n  npm run dev\nDocumentation can be found at https://github.com/huixisheng/x-scaffold-vue-webpack"
 };

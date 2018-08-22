@@ -2,6 +2,11 @@
 
 
 ## 修改记录 ##
+2018-08-17 10:18:41
+- 添加commitlint
+- 添加stylelint
+- 添加登录页面，完善整个流程
+
 2018-08-15 22:48:50
 - 支持multipage
 - 去除业务代码
@@ -22,7 +27,7 @@
 - 移除本地的Mockjs改为`easy-mock`
 - 添加`panjiachen`开发的`vue-element-admin`部分代码，并做了相关的修改
 - 添加`iconfont`
-- 添加fundebug。在线页面直接集成
+- ~~添加fundebug。在线页面直接集成~~
 - 请求支持jwt
 - 使用的统一的eslint
 
