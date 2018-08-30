@@ -3,12 +3,13 @@
 > {{ description }}
 
 
-## 生成路由和页面的通用组件
-> views/ 页面组件指定title用于页面标题的显示
+## 生成页面的路由和通用组件
+> pages/*.vue 页面组件指定title用于导航标题显示，hidden用于隐藏侧边导航显示，name通用router的name, 可用于router的cache
 
 ```
-# 生成card.vue在src/views/group下
-$ x-do-view card [-o src/views] -c group
+$ npm i x-do-cli -g
+# 生成card.vue在src/pages/group下
+$ x-do-view card [-o src/pages] -c group
 # 生成card.vue在src/components/group
 $ x-do-component card [-o src/components] -c group
 ```
