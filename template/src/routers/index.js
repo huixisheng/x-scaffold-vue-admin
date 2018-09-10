@@ -67,10 +67,12 @@ export const asyncRouterMap = [
   { path: '*', redirect: '/error/404', hidden: true },
 ];
 
+export const routes = constantRouterMap;
+
 const router = new Router({
   mode: 'history',
   // TODO base
-  routes: constantRouterMap,
+  routes,
 });
 
 export default router;

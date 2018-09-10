@@ -7,7 +7,23 @@ const devServer = require('./config/webpack-dev-server');
 const entryMultupage = require('./config/entry-multipage');
 const qiniuWebpackPlugin = require('./config/qiniu-plugin');
 const { getEnvConfig, publicPath } = require('./config/utils');
-const webpackAssetsManifessInstance = require('./config/deploy-manifest');
+const webpackAssetsManifestInstance = require('./config/deploy-manifest');
+
+class WebpackPluginXdo {
+  // constructor() {
+  //   this.xdoStatus = 'todo';
+  // }
+  apply(compiler) {
+    compiler.hooks.entryOption.tap('WebpackPluginXdo', () => {
+      require('child_process').exec('./node_modules/.bin/x-do-view');
+      require('child_process').exec('./node_modules/.bin/x-do-component');
+    });
+    compiler.hooks.watchRun.tap('WebpackPluginXdo', function (compiler) {
+      require('child_process').exec('./node_modules/.bin/x-do-view');
+      require('child_process').exec('./node_modules/.bin/x-do-component');
+    });
+  }
+}
 
 function resolve(dir) {
   return path.join(__dirname, dir);
@@ -33,11 +49,14 @@ module.exports = {
   // tweak internal webpack configuration.
   // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
   chainWebpack: (config) => {
-    // config
-    //   .plugin('define')
-    //   .tap((args) => {
-    //     console.log(args);
-    //   });
+    // https://cli.vuejs.org/guide/webpack.html#adding-a-new-loader
+    // https://github.com/neutrinojs/webpack-chain/tree/v3
+    config.module
+      .rule('json5')
+      .test(/\.json5$/)
+      .use('json5-loader')
+      .loader('json5-loader')
+      .end();
   },
   configureWebpack: (config) => {
     // 在内部无效
@@ -108,7 +127,8 @@ module.exports = {
       // config.output.publicPath = publicPath;
       // https://github.com/vuejs/vue-cli/issues/1608
       config.plugins.push(qiniuWebpackPlugin);
-      config.plugins.push(webpackAssetsManifessInstance);
+      config.plugins.push(webpackAssetsManifestInstance);
+      config.plugins.push(new WebpackPluginXdo());
     }
   },
 };

@@ -1,0 +1,13 @@
+// generate by config/entry-multipage.js
+[
+  {
+    "path": "index/index.html",
+    "name": "index/index",
+    "title": "index/index"
+  },
+  {
+    "path": "",
+    "name": "app",
+    "title": "app"
+  }
+]

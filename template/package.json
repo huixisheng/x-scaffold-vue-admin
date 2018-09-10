@@ -72,6 +72,7 @@
     "htmlhint": "^0.9.13",
     "husky": "^1.0.0-rc.8",
     "ip": "^1.1.5",
+    "json5-loader": "^1.0.1",
     "less": "^3.8.1",
     "less-loader": "^4.0.5",
     "node-sass": "^4.9.3",
@@ -86,7 +87,8 @@
     "stylelint-webpack-plugin": "^0.10.5",
     "vue-template-compiler": "^2.5.17",
     "webpack-assets-manifest": "^3.0.2",
-    "x-config-deploy": "^0.0.5"
+    "x-config-deploy": "^0.0.5",
+    "x-do-cli": "^0.0.13"
   },
   "prettier": {
     "singleQuote": true
