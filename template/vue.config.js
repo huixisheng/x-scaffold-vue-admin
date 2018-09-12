@@ -128,7 +128,7 @@ module.exports = {
       // https://github.com/vuejs/vue-cli/issues/1608
       config.plugins.push(qiniuWebpackPlugin);
       config.plugins.push(webpackAssetsManifestInstance);
-      config.plugins.push(new WebpackPluginXdo());
     }
+    config.plugins.push(new WebpackPluginXdo());
   },
 };

@@ -1,4 +1,4 @@
-/* 使用x-do-view自动生成，修改会被覆盖 */
+/* generate by x-do-view */
 const ErrorPage401 = () => import('src/pages/errorPage/401');
 const ErrorPage404 = () => import('src/pages/errorPage/404');
 
@@ -23,6 +23,5 @@ routerList.push({
   name: 'page404',
   hidden: false,
 });
-
 
 export default routerList;

@@ -1,7 +1,7 @@
-/* 使用x-do-view自动生成，修改会被覆盖 */
+/* generate by x-do-view */
 const SnippetDemo = () => import('src/pages/snippet/Demo');
-const SnippetDemoform = () => import('src/pages/snippet/DemoForm');
-const SnippetDemohttp = () => import('src/pages/snippet/DemoHttp');
+const SnippetDemoForm = () => import('src/pages/snippet/DemoForm');
+const SnippetDemoHttp = () => import('src/pages/snippet/DemoHttp');
 
 const routerList = [];
 
@@ -17,7 +17,7 @@ routerList.push({
 
 routerList.push({
   path: 'demo-form',
-  component: SnippetDemoform,
+  component: SnippetDemoForm,
   meta: {
     title: '表单例子',
   },
@@ -27,13 +27,12 @@ routerList.push({
 
 routerList.push({
   path: 'demo-http',
-  component: SnippetDemohttp,
+  component: SnippetDemoHttp,
   meta: {
     title: '数据请求例子',
   },
   name: 'snippetDemoHttp',
   hidden: false,
 });
-
 
 export default routerList;
