@@ -2,6 +2,7 @@
 const SnippetDemo = () => import('src/pages/snippet/Demo');
 const SnippetDemoForm = () => import('src/pages/snippet/DemoForm');
 const SnippetDemoHttp = () => import('src/pages/snippet/DemoHttp');
+const SnippetDemoTableD2crud = () => import('src/pages/snippet/DemoTableD2Crud');
 
 const routerList = [];
 
@@ -32,6 +33,16 @@ routerList.push({
     title: '数据请求例子',
   },
   name: 'snippetDemoHttp',
+  hidden: false,
+});
+
+routerList.push({
+  path: 'demo-table-d2-crud',
+  component: SnippetDemoTableD2crud,
+  meta: {
+    title: 'd2-crud例子',
+  },
+  name: 'snippetDemoTableD2crud',
   hidden: false,
 });
 

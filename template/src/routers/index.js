@@ -1,8 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Layout from 'src/layouts/PanJiaChen/Layout';
-// import ErrorPage404 from 'src/pages/errorPage/404';
-// import ErrorPage401 from 'src/pages/errorPage/401';
 import routerConfig from './config';
 
 import childrenSnippet from './children/snippet';
@@ -12,8 +10,10 @@ import childrenAuth from './children/auth';
 
 
 // 以下子路由自己添加
-
 Vue.use(Router);
+
+// 配置路由前缀。根据后端修改
+export const BASE_PATH = '/';
 
 export const constantRouterMap = [
   {
@@ -71,7 +71,7 @@ export const routes = constantRouterMap;
 
 const router = new Router({
   mode: 'history',
-  // TODO base
+  base: BASE_PATH,
   routes,
 });
 

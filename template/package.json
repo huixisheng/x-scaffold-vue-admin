@@ -1,5 +1,5 @@
 {
-  "name": "name",
+  "name": "{{name}}",
   "version": "0.0.1",
   "description": "{{description}}",
   "private": true,
@@ -26,11 +26,13 @@
   },
   "author": "{{author}}",
   "dependencies": {
+    "@d2-projects/d2-crud": "^1.1.1",
     "@x-scaffold/adminui": "0.0.8",
     "axios": "^0.18.0",
     "dayjs": "^1.7.5",
     "driver.js": "^0.7.1",
     "element-ui": "^2.4.6",
+    "excel-xlsx": "^1.0.1",
     "glob": "^7.1.2",
     "js-cookie": "^2.2.0",
     "lodash": "^4.17.10",
@@ -50,12 +52,12 @@
     "@commitlint/cli": "^7.0.0",
     "@commitlint/config-angular": "^7.0.1",
     "@mapbox/stylelint-processor-arbitrary-tags": "^0.2.0",
-    "@vue/cli-plugin-babel": "^3.0.1",
-    "@vue/cli-plugin-e2e-nightwatch": "^3.0.1",
-    "@vue/cli-plugin-eslint": "^3.0.1",
-    "@vue/cli-plugin-unit-mocha": "^3.0.1",
-    "@vue/cli-service": "^3.0.1",
-    "@vue/eslint-config-prettier": "^3.0.1",
+    "@vue/cli-plugin-babel": "^3.0.3",
+    "@vue/cli-plugin-e2e-nightwatch": "^3.0.3",
+    "@vue/cli-plugin-eslint": "^3.0.3",
+    "@vue/cli-plugin-unit-mocha": "^3.0.3",
+    "@vue/cli-service": "^3.0.3",
+    "@vue/eslint-config-prettier": "^3.0.3",
     "@vue/test-utils": "^1.0.0-beta.15",
     "@x-scaffold/webpack-config": "^0.0.4",
     "@x-scaffold/webpack-entry": "^0.0.3",
@@ -88,7 +90,7 @@
     "vue-template-compiler": "^2.5.17",
     "webpack-assets-manifest": "^3.0.2",
     "x-config-deploy": "^0.0.5",
-    "x-do-cli": "^0.0.13"
+    "x-do-cli": "^0.0.14"
   },
   "prettier": {
     "singleQuote": true
