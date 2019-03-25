@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const signale = require('signale');
 const configDeploy = require('x-config-deploy');
-const pkg = require('../package.json');
+const pkg = require(path.join(process.cwd(), 'package.json'));
 
 
 function showErrorHint() {

@@ -1,11 +1,23 @@
 const portFinderSync = require('portfinder-sync');
+const deepExtend = require('deep-extend');
 const IP = require('ip').address();
-const proxyTable = require('./proxy-table');
 
 const PORT = portFinderSync.getPort(8080);
+const defaultProxyOption = {
+  xfwd: false,
+  // target,
+  changeOrigin: true,
+  secure: true,
+  cookieDomainRewrite: {
+    '*': IP,
+  },
+  pathRewrite: {
+
+  },
+};
 
 // 配置见 https://webpack.docschina.org/configuration/dev-server/#devserver
-const devServer = {
+const defaultDevServer = {
   // contentBase: path.join(__dirname, 'public'),
   watchOptions: {
     poll: true,
@@ -30,11 +42,30 @@ const devServer = {
   historyApiFallback: true,
   noInfo: true,
   // See https://github.com/vuejs/vue-cli/blob/dev/docs/cli-service.md#configuring-proxy
-  proxy: proxyTable, // string | Object
+  proxy: {}, // string | Object
   before: (app) => {
     // console.log(app.request);
     // console.log(app.response);
   },
 };
 
-module.exports = devServer;
+class DevServer {
+  constructor(options) {
+    if (Array.isArray(options.proxy)) {
+      options.proxy = this.setProxy(options.proxy);
+    }
+    return deepExtend(defaultDevServer, options);
+  }
+
+  setProxy(proxyArray) {
+    const proxy = {};
+    proxyArray.forEach((item) => {
+      proxy[item.path] = deepExtend(defaultProxyOption, {
+        target: item.target,
+      });
+    });
+    return proxy;
+  }
+}
+
+module.exports = DevServer;

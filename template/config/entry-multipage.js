@@ -60,8 +60,7 @@ function getTemplateTitle(template) {
   // return content.match(/<title>(.*)<\/title>/mg)[1];
 }
 
-// console.log(pages);
-const pagesPath = path.join(__dirname, '../src/config/pages.json5');
-fs.writeFileSync(pagesPath, '// generate by config/entry-multipage.js\n' + JSON.stringify(pagesJson, null, 2));
-
-module.exports = pages;
+module.exports = {
+  pagesObject: pages,
+  pagesArray: pagesJson,
+};

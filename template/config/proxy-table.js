@@ -18,6 +18,18 @@ const proxyTable = {
 
     },
   },
+  '/user/info': {
+    xfwd: false,
+    target: 'https://www.easy-mock.com/mock/59ba562fe0dc663341aa54c3',
+    changeOrigin: true,
+    secure: true,
+    cookieDomainRewrite: {
+      '*': IP,
+    },
+    pathRewrite: {
+
+    },
+  },
 };
 
 module.exports = proxyTable;
