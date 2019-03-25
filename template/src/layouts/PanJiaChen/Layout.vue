@@ -11,7 +11,9 @@
 </template>
 
 <script>
-import { Navbar, Sidebar, AppMain, TagsView } from './components';
+import {
+  Navbar, Sidebar, AppMain, TagsView,
+} from './components';
 import ResizeMixin from './mixin/ResizeHandler';
 
 export default {

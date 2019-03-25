@@ -51,8 +51,8 @@ export default {
         // tag in the left
         this.left = -$targetLeft + padding;
       } else if (
-        $targetLeft + padding > -this.left &&
-        $targetLeft + $targetWidth < -this.left + $containerWidth - padding
+        $targetLeft + padding > -this.left
+        && $targetLeft + $targetWidth < -this.left + $containerWidth - padding
       ) {
         // tag in the current view
         // eslint-disable-line
