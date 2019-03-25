@@ -10,6 +10,8 @@
     "color-hex-case": null,
     "no-missing-end-of-source-newline": null,
     "rule-empty-line-before": null,
-    "at-rule-empty-line-before": null
+    "at-rule-empty-line-before": null,
+    "max-empty-lines": null,
+    "block-no-empty": null
   }
 }

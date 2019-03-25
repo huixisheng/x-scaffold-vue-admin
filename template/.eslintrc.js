@@ -43,5 +43,6 @@ module.exports = {
     'no-shadow': 'off',
     'import/extensions': 'off',
     'prefer-promise-reject-errors': 'off',
+    'block-no-empty': 'off',
   },
 };

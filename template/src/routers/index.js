@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Layout from 'src/layouts/PanJiaChen/Layout';
+import Layout from 'src/layouts/vue-element-admin/layout/Layout';
 import routerConfig from './config';
 
 import childrenSnippet from './children/snippet';
@@ -15,7 +15,29 @@ Vue.use(Router);
 // 配置路由前缀。根据后端修改
 export const BASE_PATH = '/';
 
-export const constantRouterMap = [
+/**
+ * note: sub-menu only appear when children.length>=1
+ * detail see  https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
+ */
+
+/**
+* hidden: true                   if `hidden:true` will not show in the sidebar(default is false)
+* alwaysShow: true               if set true, will always show the root menu, whatever its child routes length
+*                                if not set alwaysShow, only more than one route under the children
+*                                it will becomes nested mode, otherwise not show the root menu
+* redirect: noredirect           if `redirect:noredirect` will no redirect in the breadcrumb
+* name:'router-name'             the name is used by <keep-alive> (must set!!!)
+* meta : {
+    roles: ['admin','editor']    will control the page roles (you can set multiple roles)
+    title: 'title'               the name show in sub-menu and breadcrumb (recommend set)
+    icon: 'svg-name'             the icon show in the sidebar
+    noCache: true                if true, the page will no be cached(default is false)
+    breadcrumb: false            if false, the item will hidden in breadcrumb(default is true)
+    affix: true                  if true, the tag will affix in the tags-view
+  }
+*/
+
+export const constantRoutes = [
   {
     path: '/error',
     name: 'errorPage404',
@@ -23,12 +45,27 @@ export const constantRouterMap = [
     children: routerConfig.setRouter(childrenErrorPage),
     hidden: true,
   },
-  // {
-  //   path: '/401',
-  //   component: ErrorPage401,
-  //   name: 'errorPage401',
-  //   hidden: true,
-  // },
+  {
+    path: '',
+    component: Layout,
+    redirect: '/page6/xx',
+    meta: {
+      title: 'page6',
+    },
+    children: [{
+      path: 'page6',
+      meta: {
+        title: 'page6xx',
+        noCache: true,
+        affix: true,
+      },
+      name: 'dashboardIndex',
+      hidden: false,
+      component: require('../pages/Page6/index').default,
+    }],
+    name: 'errorPage401',
+    hidden: false,
+  },
   {
     path: '/dashboard',
     component: Layout,
@@ -63,16 +100,20 @@ export const constantRouterMap = [
   },
 ];
 
-export const asyncRouterMap = [
+export const asyncRoutes = [
   { path: '*', redirect: '/error/404', hidden: true },
 ];
 
-export const routes = constantRouterMap;
+export const routes = constantRoutes;
 
 const router = new Router({
   mode: 'history',
   base: BASE_PATH,
   routes,
 });
+
+export function resetRouter() {
+
+}
 
 export default router;

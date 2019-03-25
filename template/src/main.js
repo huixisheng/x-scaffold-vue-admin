@@ -7,14 +7,15 @@ import AdminUI from '@x-scaffold/adminui';
 import Packages from 'components/index';
 import 'src/assets/app.css';
 import apiInstance from 'src/models/index';
+import store from 'src/layouts/vue-element-admin/store/index';
+import i18n from 'src/layouts/vue-element-admin/lang';
+import '@/styles/index.scss';
 // 或者cdn引入
 // import 'src/icons/iconfont';
 
 import App from './App';
 import router from './routers/index';
-import store from './store/index';
 
-import i18n from './lang';
 import './permission'; // permission control
 
 Vue.prototype.$http = apiInstance;
