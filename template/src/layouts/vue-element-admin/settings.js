@@ -1,6 +1,7 @@
-export default {
-  title: 'vue-element-admin',
+import variables from '@/styles/element-variables.scss'
 
+export default {
+  theme: variables.theme,
   /**
    * @type {boolean} true | false
    * @description Whether show the settings right-panel
@@ -17,7 +18,13 @@ export default {
    * @type {boolean} true | false
    * @description Whether fix the header
    */
-  fixedHeader: true,
+  fixedHeader: false,
+
+  /**
+   * @type {boolean} true | false
+   * @description Whether show the logo in sidebar
+   */
+  sidebarLogo: false,
 
   /**
    * @type {string | array} 'production' | ['production','development']

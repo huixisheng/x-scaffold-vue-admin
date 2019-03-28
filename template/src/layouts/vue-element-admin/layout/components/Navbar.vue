@@ -85,13 +85,7 @@ export default {
 }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
-.hasTagsView {
-  .navbar {
-    border-bottom: none;
-  }
-}
-
+<style lang="scss" scoped>
 .navbar {
   height: 50px;
   overflow: hidden;
