@@ -27,5 +27,6 @@ module.exports = {
   "filters": {
     "node_modules/**/*": false
   },
-  "completeMessage": "To get started:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}npm install\n  npm run dev\nDocumentation can be found at https://github.com/huixisheng/x-scaffold-vue-webpack"
+  "skipInterpolation": "src/layouts/vue-element-admin/**/*",
+  "completeMessage": "To get started:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}yarn\n  npm run dev\nDocumentation can be found at https://github.com/huixisheng/x-scaffold-vue-webpack"
 };
