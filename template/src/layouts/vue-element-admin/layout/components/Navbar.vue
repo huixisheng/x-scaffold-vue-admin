@@ -148,7 +148,7 @@ export default {
 
       .avatar-wrapper {
         display: flex;
-        item-align: center;
+        align-items: center;
         font-size: 14px;
         position: relative;
 
