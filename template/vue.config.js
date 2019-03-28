@@ -9,7 +9,7 @@ const {
   getEnvConfig,
   publicPath,
   webpackAssetsManifestInstance,
-} = require('./config/index');
+} = require('@x-scaffold/webpack-config');
 
 
 function resolve(dir) {
@@ -19,9 +19,9 @@ function resolve(dir) {
 const target = getEnvConfig('baseUrl', 'https://www.easy-mock.com/mock/59ba562fe0dc663341aa54c3');
 
 // 支持webpack define
-// process.env.VUE_APP_MZXD_BASE = 'https://ykq.com';
+// process.env.VUE_APP_BASE = 'https://ykq.com';
 // if (process.env.NODE_ENV === 'development') {
-//   process.env.VUE_APP_MZXD_BASE = getEnvConfig('ykqBase', 'http://test.ykq.com');
+//   process.env.VUE_APP_BASE = getEnvConfig('ykqBase', 'http://test.ykq.com');
 // }
 
 module.exports = {

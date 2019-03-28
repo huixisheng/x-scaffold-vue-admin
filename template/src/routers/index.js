@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Layout from 'src/layouts/vue-element-admin/layout/Layout';
-import routerConfig from './config';
 
 import childrenSnippet from './modules/snippet';
 import childrenErrorPage from './modules/error-page';
@@ -42,7 +41,7 @@ export const constantRoutes = [
     path: '/error',
     name: 'errorPage404',
     component: Layout,
-    children: routerConfig.setRouter(childrenErrorPage),
+    children: childrenErrorPage,
     hidden: true,
   },
   // 添加 ice 路由的地址
@@ -76,7 +75,7 @@ export const constantRoutes = [
     redirect: '/dashboard/index',
     hidden: true,
     name: 'dashboard',
-    children: routerConfig.setRouter(childrenDashboard),
+    children: childrenDashboard,
     meta: {
       icon: 'product',
       title: 'dashboard',
@@ -94,7 +93,7 @@ export const constantRoutes = [
       noCache: true,
     },
     name: 'dev',
-    children: routerConfig.setRouter(childrenSnippet),
+    children: childrenSnippet,
   },
   {
     path: '/login',

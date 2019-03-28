@@ -71,6 +71,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^7.5.2",
+    "@x-scaffold/webpack-config": "^0.0.7",
     "@commitlint/config-angular": "^7.5.0",
     "@mapbox/stylelint-processor-arbitrary-tags": "^0.2.0",
     "@vue/cli-plugin-babel": "^3.4.1",
