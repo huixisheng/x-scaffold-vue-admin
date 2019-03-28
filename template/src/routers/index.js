@@ -3,10 +3,10 @@ import Router from 'vue-router';
 import Layout from 'src/layouts/vue-element-admin/layout/Layout';
 import routerConfig from './config';
 
-import childrenSnippet from './children/snippet';
-import childrenErrorPage from './children/error-page';
-import childrenDashboard from './children/dashboard';
-import childrenAuth from './children/auth';
+import childrenSnippet from './modules/snippet';
+import childrenErrorPage from './modules/error-page';
+import childrenDashboard from './modules/dashboard';
+import childrenAuth from './modules/auth';
 
 
 // 以下子路由自己添加
@@ -51,6 +51,7 @@ export const constantRoutes = [
     redirect: '/page6/xx',
     meta: {
       title: 'page6',
+      icon: 'tree',
     },
     children: [{
       path: 'page6',
@@ -58,6 +59,7 @@ export const constantRoutes = [
         title: 'page6xx',
         noCache: true,
         affix: true,
+        icon: 'product',
       },
       name: 'dashboardIndex',
       hidden: false,
@@ -75,6 +77,7 @@ export const constantRoutes = [
     name: 'dashboard',
     children: routerConfig.setRouter(childrenDashboard),
     meta: {
+      icon: 'product',
       title: 'dashboard',
     },
   },
@@ -85,7 +88,7 @@ export const constantRoutes = [
     hidden: false,
     meta: {
       title: 'snippet',
-      icon: 'homepage',
+      icon: 'fenlei',
       roles: ['editor', 'admin'],
       noCache: true,
     },

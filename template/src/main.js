@@ -10,8 +10,7 @@ import apiInstance from 'src/models/index';
 import store from 'src/layouts/vue-element-admin/store/index';
 import i18n from 'src/layouts/vue-element-admin/lang';
 import '@/styles/index.scss';
-// 或者cdn引入
-// import 'src/icons/iconfont';
+import 'src/icons/';
 
 import App from './App';
 import router from './routers/index';
@@ -44,6 +43,16 @@ Vue.use(Packages);
 // })
 
 Vue.config.productionTip = false;
+
+store.dispatch('settings/changeSetting', {
+  key: 'sidebarLogo',
+  value: true,
+});
+
+store.dispatch('settings/changeSetting', {
+  key: 'fixedHeader',
+  value: true,
+});
 
 // eslint-disable-next-line
 new Vue({

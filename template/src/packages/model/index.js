@@ -1,6 +1,6 @@
 import HttpService from 'pack-axios';
 import router from 'src/routers';
-import { setToken, getToken } from 'src/utils/auth';
+import { setToken, getToken } from '@/utils/auth';
 
 function isObject(o) {
   return Object.prototype.toString.call(o) === '[object Object]';

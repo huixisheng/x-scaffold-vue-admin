@@ -6,14 +6,6 @@ import 'nprogress/nprogress.css';
 import { getToken } from 'src/layouts/vue-element-admin/utils/auth'; // getToken from cookie
 import store from 'src/layouts/vue-element-admin/store/index';
 
-function redirectLogin() {
-  // TODO 根据自己的登录系统自行处理
-  router.push({
-    name: 'login',
-  });
-}
-
-
 NProgress.configure({ showSpinner: false });
 
 const whiteList = ['/login', '/auth-redirect'] // no redirect whitelist
