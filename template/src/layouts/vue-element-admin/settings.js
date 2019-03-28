@@ -25,6 +25,8 @@ export default {
    * @description Whether show the logo in sidebar
    */
   sidebarLogo: false,
+  sidebarLogoUrl: 'https://wpimg.wallstcn.com/69a1c46c-eb1c-4b46-8bd4-e9e686ef5251.png',
+  sidebarLogoTitle: 'Vue Element Admin',
 
   /**
    * @type {string | array} 'production' | ['production','development']

@@ -1,12 +1,14 @@
 import defaultSettings from '@/settings'
-const { showSettings, tagsView, fixedHeader, sidebarLogo, theme } = defaultSettings
+const { showSettings, tagsView, fixedHeader, sidebarLogo, theme, sidebarLogoTitle, sidebarLogoUrl } = defaultSettings
 
 const state = {
   theme: theme,
   showSettings: showSettings,
   tagsView: tagsView,
   fixedHeader: fixedHeader,
-  sidebarLogo: sidebarLogo
+  sidebarLogo: sidebarLogo,
+  sidebarLogoTitle,
+  sidebarLogoUrl,
 }
 
 const mutations = {
@@ -29,4 +31,3 @@ export default {
   mutations,
   actions
 }
-
