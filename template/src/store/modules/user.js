@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { login, logout, getInfo } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import router, { resetRouter } from 'src/routers'
@@ -47,7 +48,8 @@ const actions = {
   // get user info
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
-      getInfo(state.token).then(response => {
+      this._vm.$http.run('authUser', {}).then(response => {
+      // getInfo(state.token).then(response => {
         const { data } = response
 
         if (!data) {
@@ -75,7 +77,8 @@ const actions = {
   // user logout
   logout({ commit, state }) {
     return new Promise((resolve, reject) => {
-      logout(state.token).then(() => {
+      this._vm.$http.run('authLogout', {}).then(() => {
+      // logout(state.token).then(() => {
         commit('SET_TOKEN', '')
         commit('SET_ROLES', [])
         removeToken()

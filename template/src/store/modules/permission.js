@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { asyncRoutes, constantRoutes } from 'src/routers'
 
 /**

@@ -140,7 +140,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid && geetest) {
           this.$http.run('authLogin', params).then(() => {
-            this.$router.push({ name: 'index' });
+            this.$router.push({ path: '/' });
           }).catch((error) => {
             that.captchaObj.reset();
             this.$message.error(error.msg);

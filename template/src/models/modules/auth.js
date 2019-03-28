@@ -1,11 +1,5 @@
-/**
- * ajax请求的url链接配置
- * @author huixisheng
- */
-const BASE_PATH = '/v1';
-
 // 后台用户模块
-const authUrl = {
+const url = {
   authCaptcha: {
     method: 'GET',
     url: '/auth/captcha',
@@ -30,31 +24,11 @@ const authUrl = {
         "name": "超级管理员"
       }
     }
-   */
+  */
   authUser: {
     method: 'GET',
     url: '/user/info',
   },
 };
 
-// TODO 用于接口测试，可删除
-const testSnippet = {
-  // 返回相关文档列表
-  docsList: {
-    method: 'GET',
-    url: '/docs-list',
-  },
-};
-
-const URL = {
-  ...testSnippet,
-  ...authUrl,
-};
-
-// eslint-disable-next-line
-for (const i in URL) {
-  // TODO
-  URL[i]['url'] = BASE_PATH + URL[i]['url'];
-}
-
-export default URL;
+export default url;

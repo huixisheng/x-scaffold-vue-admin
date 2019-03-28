@@ -45,29 +45,30 @@ export const constantRoutes = [
     children: routerConfig.setRouter(childrenErrorPage),
     hidden: true,
   },
-  {
-    path: '',
-    component: Layout,
-    redirect: '/page6/xx',
-    meta: {
-      title: 'page6',
-      icon: 'tree',
-    },
-    children: [{
-      path: 'page6',
-      meta: {
-        title: 'page6xx',
-        noCache: true,
-        affix: true,
-        icon: 'product',
-      },
-      name: 'dashboardIndex',
-      hidden: false,
-      component: require('../pages/Page6/index').default,
-    }],
-    name: 'errorPage401',
-    hidden: false,
-  },
+  // 添加 ice 路由的地址
+  // {
+  //   path: '',
+  //   component: Layout,
+  //   redirect: '/page6/xx',
+  //   meta: {
+  //     title: 'page6',
+  //     icon: 'tree',
+  //   },
+  //   children: [{
+  //     path: 'page6',
+  //     meta: {
+  //       title: 'page6xx',
+  //       noCache: true,
+  //       affix: true,
+  //       icon: 'product',
+  //     },
+  //     name: 'dashboardIndex',
+  //     hidden: false,
+  //     component: require('../pages/Page6/index').default,
+  //   }],
+  //   name: 'errorPage401',
+  //   hidden: false,
+  // },
   {
     path: '/dashboard',
     component: Layout,
