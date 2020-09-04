@@ -96,7 +96,7 @@
     "less": "^3.9.0",
     "less-loader": "^4.0.5",
     "lint-staged": "^8.1.5",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.1",
     "pkg-dir": "^3.0.0",
     "portfinder-sync": "0.0.2",
     "sass-loader": "^7.1.0",
