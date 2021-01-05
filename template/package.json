@@ -45,7 +45,7 @@
     "@d2-projects/d2-crud": "^2.0.5",
     "@vue-materials/basic-container": "^1.0.0",
     "@x-scaffold/adminui": "0.0.8",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "dayjs": "^1.8.11",
     "driver.js": "^0.9.5",
     "echarts": "^4.2.1",
